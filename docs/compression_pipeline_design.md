@@ -56,9 +56,9 @@ Once AKUs are extracted, this module enriches them with metadata to build a conn
 ## 5. Hierarchical Summarisation
 The final stage rolls up the atomic data into a four-level compression stack. Summaries at Level $N$ are used strictly as the input to generate Level $N+1$, ensuring extreme data reduction at the top level without hallucination.
 
-| Level | Scope | Token Budget | Mechanism / Output |
-| :--- | :--- | :--- | :--- |
-| **Level 0** | **Chunk Level** | ~100 - 150 tokens | Direct synthesis of the highest-value AKUs extracted from a single Markdown chunk. |
-| **Level 1** | **Document Level** | ~400 - 500 tokens | Synthesis of all Level 0 summaries within a single `.md` file (e.g., `ec2-ug.md`). |
-| **Level 2** | **Domain Level** | ~800 - 1000 tokens | Synthesis of all Level 1 summaries for an entire AWS Service (e.g., the complete "Amazon EC2" profile). |
-| **Level 3** | **Org Overview** | ~1500 tokens total | A global snapshot of the AWS ecosystem, synthesizing all Level 2 domain summaries into a single executive artifact. |
+| Level | Scope | Mechanism / Output |
+| :--- | :--- | :--- |
+| **Level 0** | **Chunk Level** | Direct synthesis of the highest-value AKUs extracted from a single Markdown chunk. |
+| **Level 1** | **Document Level** | Synthesis of all Level 0 summaries within a single `.md` file (e.g., `ec2-ug.md`). |
+| **Level 2** | **Domain Level** | Synthesis of all Level 1 summaries for an entire AWS Service (e.g., the complete "Amazon EC2" profile). |
+| **Level 3** | **Org Overview** | A global snapshot of the AWS ecosystem, synthesizing all Level 2 domain summaries into a single executive artifact. |
