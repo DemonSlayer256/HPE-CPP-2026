@@ -271,16 +271,6 @@
       "last_updated": "2026-03-26"
     },
     {
-      "id": "AWS-EC2-cfn-ug",
-      "title": "User Guide",
-      "source_path": "data/prototype/EC2/L1/cfn-ug.md",
-      "service": "EC2",
-      "knowledge_type": "conceptual",
-      "target_layer": "L1",
-      "token_count": 203519,
-      "last_updated": "2026-03-26"
-    },
-    {
       "id": "AWS-VPC-aws-overview",
       "title": "User Guide",
       "source_path": "data/prototype/VPC/L1/aws-overview.md",
