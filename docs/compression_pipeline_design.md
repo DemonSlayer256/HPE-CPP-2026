@@ -1,64 +1,196 @@
+
 # Compression Pipeline Design
 
 ## 1. Overview
-This document outlines the architecture for the AWS Knowledge Compression Pipeline. The pipeline is designed to ingest raw Markdown documentation and process it through a multi-stage funnel, ultimately producing highly compressed, structured representations of AWS knowledge.
+This document describes the design of an AWS Knowledge Compression Pipeline. The system transforms raw documentation into structured, compact, and reliable knowledge representations.
 
-The pipeline consists of four primary stages:
-1.  **Chunking Module**
-2.  **Atomic Knowledge Unit (AKU) Extraction**
-3.  **Topic Extraction Module**
-4.  **Hierarchical Summarisation**
+Rather than simply summarizing text, the pipeline focuses on preserving facts while progressively compressing information. This ensures that even highly compressed outputs remain accurate and meaningful.
 
----
+### 1.1 Pipeline Structure
+The system is organized into three core modules:
+1. Document Chunking
+2. Topic Extraction
+3. Hierarchical Summarization
 
-## 2. Chunking Module
-The first stage processes raw Markdown files and splits them into manageable semantic blocks suitable for Large Language Model (LLM) context windows.
+Each module builds on the output of the previous one, gradually increasing structure while reducing redundancy.
 
-* **Primary Boundaries (Semantic):** Documents are split at Markdown heading boundaries, specifically `##` (Level 2) and `###` (Level 3) headers. This ensures chunks naturally align with the author's intended topic breaks.
-* **Secondary Boundaries (Length-Based):** If a specific section exceeds a soft limit of **~500 tokens**, the module falls back to splitting at paragraph double-newlines (`\n\n`) to prevent context overflow.
-* **Overlap Strategy:** To prevent context loss across boundaries (e.g., a pronoun in the first sentence of a new chunk referring to an entity in the previous chunk), the system implements a **~50-token overlap**. The last 50 tokens of chunk $N$ are prepended to the start of chunk $N+1$.
+### 1.2 Data Flow
+The pipeline operates as a sequential transformation:
+- Chunking produces structured chunks enriched with metadata and atomic facts
+- Topic extraction organizes these facts into a knowledge graph
+- Summarization compresses this structured representation into multiple levels
 
----
+### 1.3 System Objectives
+The system is designed to:
+- Preserve critical factual information
+- Represent knowledge in a structured and connected form
+- Enable scalable compression across different abstraction levels
 
-## 3. Atomic Knowledge Unit (AKU) Extraction
-*This is the core parsing innovation of the pipeline. It sits precisely between the Chunking module and the Structured Representation stage.*
 
-### 3.1. Definition
-An **Atomic Knowledge Unit (AKU)** is the smallest, self-contained piece of knowledge that independently answers a single question or asserts a single verifiable fact. Instead of summarising a chunk directly, the LLM decomposes the chunk into a discrete list of AKUs. This allows for granular, programmatic control over what data is retained or discarded during final compression.
+## 2. Module 1: Document Chunking
+This module prepares raw documents for downstream processing by dividing them into meaningful, manageable units.
 
-### 3.2. The Quality Bar
-For a statement to qualify as an AKU, it must strictly pass the following criteria:
-1.  **Self-Contained:** It does not rely on preceding or following sentences to be understood (no dangling pronouns like "It also requires...").
-2.  **Single-Fact/Action:** It contains only one primary assertion or workflow step.
-3.  **Entity-Grounded:** It explicitly names at least one AWS service, component, or conceptual entity.
-4.  **The Reverse-Question Test:** You must be able to instantly reconstruct the exact question this AKU is answering.
+### 2.1 Chunking Strategy
+Documents are split using natural structural boundaries such as headings. When sections are too large, they are further divided using paragraph-level splitting.
 
-### 3.3. AKU Archetypes (Examples)
-* **Factual:** "AWS Lambda maximum execution timeout is strictly 900 seconds (15 minutes)." *(Reverse Question: What is the maximum execution timeout for Lambda?)*
-* **Procedural:** "Step 3: Attach an IAM execution role to the target AWS Lambda function prior to initiating deployment." *(Reverse Question: What must be attached to a Lambda function before deployment?)*
-* **Conceptual:** "Principle of Least Privilege requires granting IAM users only the absolute minimum permissions necessary to execute a specific task." *(Reverse Question: What is the Principle of Least Privilege in IAM?)*
+- Typical chunk size ranges between 500 and 1000 tokens  
+- Splitting respects semantic coherence and document structure  
 
----
+This ensures each chunk remains meaningful and self-contained.
 
-## 4. Topic Extraction Module
-Once AKUs are extracted, this module enriches them with metadata to build a connected knowledge graph.
+### 2.2 Overlap Strategy
+To preserve context across boundaries, overlap is introduced between consecutive chunks.
 
-* **Entity Recognition:** Extracts and tags specific nouns.
-    * *Services:* (e.g., `AWS Lambda`, `Amazon S3`)
-    * *Components:* (e.g., `Execution Role`, `S3 Bucket Policy`)
-    * *Configurations:* (e.g., `MemorySize`, `Timeout`)
-* **Relationship Mapping:** Defines directed edges between entities based on the AKU.
-    * *Example:* `AWS Lambda` → [DEPENDS_ON] → `IAM Execution Role`.
-* **Importance Signals:** Assigns a weight to the topic based on structural position (e.g., was it derived from an H1 title or a deeply nested bullet point?) and frequency of occurrence across the service domain.
+- Each chunk shares the last 100 tokens with the next  
 
----
+This prevents loss of context and maintains continuity of entities and ideas.
 
-## 5. Hierarchical Summarisation
-The final stage rolls up the atomic data into a four-level compression stack. Summaries at Level $N$ are used strictly as the input to generate Level $N+1$, ensuring extreme data reduction at the top level without hallucination.
+### 2.3 Metadata
+Each chunk is enriched with contextual metadata, including:
+- Its position within the document  
+- Section hierarchy  
+- Source reference  
 
-| Level | Scope | Mechanism / Output |
-| :--- | :--- | :--- |
-| **Level 0** | **Chunk Level** | Direct synthesis of the highest-value AKUs extracted from a single Markdown chunk. |
-| **Level 1** | **Document Level** | Synthesis of all Level 0 summaries within a single `.md` file (e.g., `ec2-ug.md`). |
-| **Level 2** | **Domain Level** | Synthesis of all Level 1 summaries for an entire AWS Service (e.g., the complete "Amazon EC2" profile). |
-| **Level 3** | **Org Overview** | A global snapshot of the AWS ecosystem, synthesizing all Level 2 domain summaries into a single executive artifact. |
+This enables traceability, contextual reconstruction, and consistency across stages.
+
+### 2.4 Atomic Knowledge Unit (AKU) Extraction
+After chunking, each chunk is further decomposed into Atomic Knowledge Units (AKUs).
+
+#### 2.4.1 Definition
+An AKU represents the smallest self-contained factual statement.
+
+Each AKU follows a structured form:
+- Subject → Predicate → Object  
+
+Example:  
+"AWS Lambda requires an IAM role"  
+→ (Lambda, requires, IAM Role)
+
+#### 2.4.2 Properties
+A valid AKU is:
+- Self-contained  
+- Focused on a single fact or action  
+- Explicitly tied to entities  
+- Interpretable as a standalone unit  
+
+#### 2.4.3 Role in the System
+AKUs form the foundational layer of the pipeline. They capture facts independently of how they are written in the source.
+
+They are used to:
+- Preserve factual correctness during compression  
+- Guide summarization  
+- Enable validation  
+- Maintain consistency across outputs  
+
+#### 2.4.4 Integration
+AKUs are generated immediately after chunking, stored alongside chunks, and carried through all downstream modules.
+
+
+## 3. Module 2: Topic Extraction
+This module organizes extracted information into a structured representation by identifying entities, relationships, and themes.
+
+### 3.1 Core Functions
+The module performs:
+- Topic identification  
+- Entity extraction  
+- Relationship mapping  
+- Importance estimation  
+
+### 3.2 Knowledge Graph Construction
+The output of this module is a knowledge graph:
+- Nodes represent entities (services, components, configurations)  
+- Edges represent relationships between them  
+
+This graph captures how different parts of the system interact.
+
+### 3.3 Graph-Guided Processing
+The knowledge graph plays an active role in downstream stages.
+
+It is used to:
+- Identify important entities  
+- Preserve key relationships  
+- Guide the summarization process  
+
+### 3.4 Importance-Driven Representation
+The system evaluates importance based on:
+- Frequency of occurrence  
+- Structural position within documents  
+- Connectivity within the graph  
+
+This determines which information is prioritized and retained during compression.
+
+
+## 4. Module 3: Hierarchical Summarization
+This module performs progressive compression of information into multiple levels of abstraction.
+
+### 4.1 Hierarchical Structure
+
+| Level | Scope |
+|------|------|
+| Level 4 | Section summaries |
+| Level 3 | Document summaries |
+| Level 2 | Topic summaries |
+| Level 1 | Category summaries |
+| Level 0 | Global overview |
+
+### 4.2 Aggregation Flow
+Each level is built from the level directly below it:
+
+Sections → Documents → Topics → Categories → Global  
+
+This ensures that higher-level summaries remain grounded in lower-level information.
+
+### 4.3 Progressive Compression
+- Lower levels retain detailed technical information  
+- Higher levels focus on abstraction and clarity  
+
+This enables different levels of detail depending on user needs.
+
+### 4.4 Token Budgets
+
+| Level | Approx Tokens |
+|------|--------------|
+| Section | ~500 |
+| Document | ~200 |
+| Topic | ~100 |
+| Category | ~50 |
+| Global | ~25 |
+
+These budgets guide how aggressively information is compressed at each level.
+
+### 4.5 Constraint-Based Summarization
+Summarization is guided by structured constraints to ensure factual integrity.
+
+- Important entities must be included  
+- Key relationships must be preserved  
+- Numerical values must remain exact  
+- AKUs act as anchors for factual correctness  
+
+This reduces hallucination and ensures reliable outputs.
+
+### 4.6 Cross-Level Consistency
+Consistency is maintained across all levels of the hierarchy.
+
+- The same facts should persist across summaries  
+- AKUs and shared entities link different levels  
+
+This ensures coherence and prevents contradictions.
+
+### 4.7 Validation
+The system includes validation mechanisms to maintain quality.
+
+- Summaries are checked against AKUs  
+- Unsupported or hallucinated information is identified  
+- Coverage of important entities and relationships is verified  
+
+This ensures that compression does not compromise accuracy.
+
+
+## 5. System Characteristics
+
+### 5.1 Summary
+The system provides:
+- Fact-preserving compression of knowledge  
+- Structured representation through a knowledge graph  
+- Scalable hierarchical summarization  
+- Consistent and interpretable outputs  
