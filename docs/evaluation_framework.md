@@ -40,7 +40,7 @@ question types.
 | **Parameter**    | **Value**                                   | **Notes**                               |
 |------------------|---------------------------------------------|-----------------------------------------|
 | Total Questions  | 150 (range: 100–200)                        | Balanced for statistical validity       |
-| AWS Services     | S3, EC2, Lambda, IAM, VPC                   | Covers core compute, storage & security |
+| AWS Services     | S3, EC2, Lambda, IAM, VPC , CloudFormation , CloudWatch ,RDC| Covers core compute, storage & security |
 | Layers Triggered | Layer 0, Layer 1, Layer 2, Layer 3, Layer 4 | All hierarchy levels must be exercised  |
 
 *Table 1: Dataset specification parameters.*
@@ -49,9 +49,10 @@ question types.
 
 | **Question Type** | **Weight** | **Count**    | **Purpose**                                     | **Example**                   |
 |-------------------|------------|--------------|-------------------------------------------------|-------------------------------|
-| **Factual**       | 40%        | 60 questions | Verify direct facts, limits, and specifications | "Max S3 object size?"         |
-| **Procedural**    | 35%        | 52 questions | Evaluate step-by-step task execution accuracy   | "Upload to S3 via Lambda?"    |
-| **Conceptual**    | 25%        | 38 questions | Test understanding of service relationships     | "How does S3 trigger Lambda?" |
+| **Factual**       | 30%        | 45 questions | Verify direct facts, limits, and specifications | "Max S3 object size?"         |
+| **Procedural**    | 25%        | 37 questions | Evaluate step-by-step task execution accuracy   | "Upload to S3 via Lambda?"    |
+| **Conceptual**    | 20%        | 30 questions | Test understanding of service relationships     | "How does S3 trigger Lambda?" |
+| **Contextual**    | 25%        | 38 questions | Evaluate decision-making based on real-world scenarios and constraints|"Which AWS service should I use for low-latency file processing?"|
 
 *Table 2: Question type distribution across the evaluation dataset.*
 
@@ -252,7 +253,7 @@ To ensure a fair and reproducible comparison, the baseline is defined with the f
 - Model: Same LLM as hierarchical system (e.g., GPT / Claude / LLaMA API)
 - Prompt Structure: Single-layer prompt containing all relevant context
 - Context Construction: Raw or lightly processed documentation chunks concatenated into a single prompt
-- No Layering: No L0/L1/L2 hierarchy
+- No Layering: No L0/L1/L2/L3/L4 hierarchy
 - No Caching: Full recomputation for every query
 - Temperature: Fixed (e.g., 0.2–0.3 for factual consistency)
 - Token Budget: Same maximum context window as hierarchical system
