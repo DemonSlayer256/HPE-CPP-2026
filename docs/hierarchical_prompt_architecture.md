@@ -1,254 +1,222 @@
 # Hierarchical Prompt Architecture
 
 ## 1. Overview
-This document defines the static context loading strategy for the compressed AWS knowledge base. Because we cannot fit the entirety of AWS documentation into a single prompt without degrading reasoning quality and exceeding context windows, the compressed knowledge is structured into three distinct layers.
 
-This architecture guarantees that the LLM always has the required foundational context (Layer 0), while dynamically appending deeper domain knowledge (Layer 1) and niche topics (Layer 2) strictly based on the user's query intent.
+This document defines the static context loading strategy for the compressed AWS knowledge base.
 
-This approach prevents context dilution and ensures the model reasons over relevant, high-signal, low-redundancy information within token constraints.
+Because the full AWS documentation cannot fit within a single prompt without degrading reasoning quality and exceeding context limits, the knowledge is structured into three layers.
+
+This architecture ensures:
+
+* Foundational context is always available
+* Domain knowledge is selectively loaded
+* Specific topics are injected only when required
+
+This prevents context dilution and enables high-signal reasoning within strict token constraints.
 
 ---
 
-## 2. Layer 0: The Core Snapshot (Always Loaded)
+## 2. Token Budget Summary
 
-**Token Budget:** ~500 – 1000 tokens  
-**Loading Trigger:** Always Active (Injected into base system prompt)  
-**Target Services:** EC2, S3, IAM, VPC, Lambda  
+| Layer | Tokens               | Trigger          |
+| ----- | -------------------- | ---------------- |
+| L0    | 500–1000             | Always           |
+| L1    | 2000–3000 per domain | Intent-based     |
+| L2    | 500–2000 per topic   | Entity-triggered |
 
 ---
+
+## 3. Layer 0: The Core Snapshot (Always Loaded)
+
+**Token Budget:** ~500–1000 tokens
+**Loading Trigger:** Always Active
 
 ### Specification
 
-Layer 0 is **not** a collection of summaries. It is a **dense, cross-linked snapshot** of foundational AWS primitives and their interactions. It defines the “laws of physics” of the AWS ecosystem.
+Layer 0 is a dense, cross-linked snapshot of foundational AWS primitives.
+
+It defines system-wide invariants and service interactions.
+
+### Structure
+
+* Entities → Core services
+* Relationships → Service interactions
+* Constraints → Limits and defaults
+* Scope → Global vs regional behavior
+
+### Constraints
+
+Layer 0 must not include:
+
+* Procedural steps
+* Configuration details
+* Deep implementation logic
 
 ---
 
-### Structure (Strict)
+## 4. Layer 1: Domain-Specific Blocks
 
-Each Layer 0 block must follow:
-
-- **Entities** → Core services (EC2, S3, IAM, VPC, Lambda)  
-- **Relationships** → Explicit service interactions  
-- **Constraints** → Hard limits and defaults  
-- **Scope** → Global vs regional behavior  
-
----
-
-### Content to Include
-
-#### 1. Key Interconnections (The Web)
-
-- Lambda executes within a VPC, uses IAM roles, and can be triggered by S3 events  
-- EC2 runs inside VPC subnets, uses EBS for storage, and IAM roles for access  
-- IAM governs permissions across ALL services  
-- S3 acts as shared storage accessed by EC2 and Lambda  
-- VPC defines network boundaries and connectivity  
-
----
-
-#### 2. Critical Limits & Defaults
-
-- Lambda → 15-minute timeout, 10GB memory  
-- S3 → 5TB object size, private by default  
-- VPC → Max 5 CIDR blocks, ~5 VPCs per region (default limit)  
-
----
-
-#### 3. Global vs Regional Scope
-
-- IAM → Global  
-- EC2, VPC, Lambda → Regional  
-- S3 → Global namespace, regionally stored  
-
----
-
-### Constraints (Strict Rules)
-
-Layer 0 must NOT contain:
-- Step-by-step procedures  
-- Configuration instructions  
-- Deep service-specific implementation details  
-
-All statements must be derived from validated atomic knowledge units (AKUs).
-
----
-
-## 3. Layer 1: Domain-Specific Blocks (Loaded by Intent)
-
-**Token Budget:** ~2000 – 3000 tokens per domain  
-**Loading Trigger:** Intent Classification (Query Mapping)  
-
----
+**Token Budget:** ~2000–3000 tokens
+**Loading Trigger:** Intent Classification
 
 ### Supported Domains
 
-- **Database Domain:** Amazon RDS, DynamoDB  
-- **Infrastructure as Code (IaC):** AWS CloudFormation  
-- **Observability Domain:** CloudWatch, CloudTrail  
-
----
+* Database
+* Infrastructure as Code
+* Observability
 
 ### Specification
 
-Layer 1 blocks contain compressed domain knowledge extracted from the pipeline.
+* Contains compressed domain-level knowledge
+* Multiple domains may be loaded
+* Maximum of 2–3 domains
 
-- Multiple Layer 1 domains can be loaded if required  
-- Soft cap: **2–3 domains maximum** to maintain efficiency  
+### Mapping Priority
 
----
-
-### Query → Domain Mapping
-
-#### 1. Keyword Heuristics
-- "RDS", "PostgreSQL", "Aurora" → Database Domain  
-- "CloudFormation", "template", "stack" → IaC Domain  
-
-#### 2. Semantic Intent
-- "monitor", "logs", "metrics" → Observability Domain  
-
-#### 3. Operational Context
-- "deploy", "rollback", "automation" → IaC Domain  
+**Explicit Entity > Keyword Match > Semantic Intent**
 
 ---
 
-### Priority Rule
+## 5. Layer 2: On-Demand Topics
 
-
-Explicit Service Mention > Semantic Intent > Inferred Context
-
-
----
-
-### Loading Behavior
-
-If a domain is triggered, the corresponding compressed `.md` block is appended as a **Layer 1 context block**.
-
----
-
-## 4. Layer 2: On-Demand Topics (Triggered by Entity)
-**Loading Trigger:** Entity Detection (Exact + Semantic Match)  
-
----
-
-### Target Services
-
-ECS, API Gateway, Step Functions, Kinesis, EventBridge, etc.
-
----
+**Token Budget:** ~500–2000 tokens per topic
+**Loading Trigger:** Entity Detection
 
 ### Specification
 
-Layer 2 contains highly specific service-level knowledge. These are loaded only when explicitly required.
-
----
+* Contains service-specific knowledge
+* Loaded only when required
 
 ### Trigger Mechanism
 
-#### 1. Exact Match
-- "API Gateway" → load `api_gateway.md`  
-- "Kinesis" → load `kinesis.md`  
+* Exact match (e.g., API Gateway)
+* Semantic match (e.g., API endpoints)
 
-#### 2. Semantic Match
-- "API endpoints" → API Gateway  
-- "real-time streaming" → Kinesis  
+### Constraints
 
----
-
-### Stacking Behavior
-
-- Multiple Layer 2 topics can be loaded  
-- Example:
-
-"Connect API Gateway to Step Functions"
-→ Load both topics
-
+* Maximum 2–3 topics
+* Skipped if no relevant entities
 
 ---
 
-### Token Guard
+## 6. Fact Grounding (AKUs)
 
-Maximum of **2–3 Layer 2 topics** can be loaded simultaneously to prevent overflow.
+### Role
+
+AKUs provide atomic, verifiable facts used to ground responses.
+
+### Contents
+
+* Service relationships
+* Limits and configurations
+* Critical constraints
+
+### Behavior
+
+AKUs are injected before all layers in the final prompt and act as the primary factual grounding mechanism. They are used for maintaining the following parameters strictly.
+
+  * Limits
+  * Configurations
+  * Permissions
 
 ---
 
-### Fallback
+## 7. Routing Strategy
 
-If no entities are detected, Layer 2 is skipped entirely.
+### Inputs
+
+* Query text
+* Detected entities
+* Semantic intent
+
+### Priority
+
+**Explicit Entity > Keyword > Semantic Intent**
+
+### Output
+
+* Selected domains (Layer 1)
+* Selected topics (Layer 2)
 
 ---
 
-## 5. Assembly Example
-### User Query
+## 8. Prompt Ordering Strategy
 
-> "How do I deploy an RDS Postgres database using CloudFormation and monitor its CPU?"
+Final prompt structure:
+
+1. AKUs (facts)
+2. Layer 1 (domain context)
+3. Layer 2 (topic context, if needed)
+4. Layer 0 (core snapshot)
+
+This ordering ensures:
+
+* Facts anchor reasoning
+* Domain context guides interpretation
+* Details refine outputs
 
 ---
+
+## 9. Context Optimization
+
+### Techniques
+
+* Deduplication of repeated entities
+* Removal of overlapping summaries
+* Priority-based trimming
+
+### Trimming Order
+
+**Layer 2 → Layer 1 → Layer 0**
+
+---
+
+## 10. Layer Interaction Model
+
+* Layer 0 → Provides system-wide constraints
+* Layer 1 → Narrows reasoning to domain
+* Layer 2 → Injects precise task-level details
+
+This creates a progressive refinement pipeline:
+
+**General → Specific → Precise**
+
+---
+
+## 11. Edge Case Handling
+
+### No Match
+
+Fallback to Layer 0 + closest semantic domain
+
+### Too Many Matches
+
+Limit to top 2–3 domains/topics
+
+### Ambiguous Query
+
+Prioritize broader domain over specific topics
+
+---
+
+## 12. Assembly Example
+
+### Query
+
+"Deploy RDS Postgres using CloudFormation and monitor CPU"
 
 ### Context Assembly
 
-1. **Layer 0**  
- Base primitives: IAM permissions, VPC networking for RDS  
- 
+* Layer 0 → Core services and relationships
+* Layer 1 → IaC, Database, Observability
+* Layer 2 → Not required
 
-2. **Layer 1 – IaC Domain**  
- CloudFormation templates, stack lifecycle, rollback logic  
- 
-
-3. **Layer 1 – Database Domain**  
- RDS PostgreSQL configuration, scaling, networking  
- 
-
-4. **Layer 1 – Observability Domain**  
- CloudWatch metrics, alarms, CPU monitoring  
- 
-
-5. **Layer 2**  
- Not triggered (if enough context is provided at the above layers itself)
- 
+This ensures high relevance with minimal redundancy.
 
 ---
 
-### Why Multiple Domains?
+## 13. Final Summary
 
-The query spans:
-- Deployment → IaC Domain  
-- Database setup → Database Domain  
-- Monitoring → Observability Domain  
+This architecture transforms prompting from **Flat context loading** into **Structured, layered knowledge injection**
 
----
-This ensures:
-- High relevance  
-- Minimal noise  
-- Maximum reasoning headroom  
-
----
-
-## 6. Key Design Principles
-
-### 1. Minimal Token Usage
-Load only what is required
-
-### 2. Maximum Context Relevance
-Prioritize high-signal knowledge
-
-### 3. Strong Interconnections
-Services are modeled as a system, not isolated components
-
-### 4. Layered Reasoning
-- Layer 0 → System invariants  
-- Layer 1 → Domain intelligence  
-- Layer 2 → Task-specific precision  
-
----
-
-## 7. Final Insight
-
-This architecture transforms prompting from:
-
-Flat context dumping into a Structured, layered knowledge injection.
-
-It functions as:
-
-> A context-aware reasoning system rather than a static prompt
-
----
+It functions as a context-aware reasoning system rather than a static prompt.
