@@ -1,0 +1,1454 @@
+{
+  "level_4_sections": [
+    {
+      "section_id": "sec_master",
+      "summary": "Welcome Welcome to the Amazon Simple Storage Service API Reference. This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API). You can use any toolkit that supports HTTP to use the REST API. You can even use a browser to fetch objects, as long as they are anonymously readable. The REST API uses the standard HTTP headers and status codes, so that standard browsers and toolkits work as expected. Authenticated access requires credentials that AWS can use to authenticate your requests. It requires you to write the necessary code to calculate a valid signature to authenticate your requests. We recommend the following alternatives instead: \u2022 Use the AWS SDKs to send your requests. If you use the SDKs, you don't need to write code to calculate a signature for request authentication because the SDK clients authenticate your requests by using access keys that you provide. For information about setting up the AWS CLI and example Amazon S3 commands see the following topics: Set Up the AWS CLI in the Amazon Simple Storage Service User Guide. Permissions You can have valid credentials to authenticate your requests, but unless you have S3 permissions from the account owner or bucket owner you cannot create or access Amazon S3 resources. Permissions You can have valid credentials to authenticate your requests, but unless you have S3 permissions from the account owner or bucket owner you cannot create or access Amazon S3 resources. These endpoints support virtual-hosted-style requests in the format https://amzn-s3-demo-bucket.s3express-zone-id.region- code.amazonaws.com/key-name . These endpoints support virtual-hosted-style requests in the format https://amzn-s3-demo-bucket.s3express-zone-id.region- code.amazonaws.com/key-name . Permissions \u2022 General purpose bucket permissions - For information about permissions required to use the multipart upload, see Multipart Upload and Permissions in the Amazon S3 User Guide. Permissions \u2022 General purpose bucket permissions - For information about permissions required to use the multipart upload, see Multipart Upload and Permissions in the Amazon S3 User Guide. Then, you make the CreateSession API call on the bucket to obtain a session token. Then, you make the CreateSession API call on the bucket to obtain a session token. Then, you make the CreateSession API call on the bucket to obtain a session token. x-amz-if-match-initiated-time If present, this header aborts an in progress multipart upload only if it was initiated on the provided timestamp. For more information, see Using Requester Pays buckets for storage transfers and usage in the Amazon Simple Storage Service user guide. The CompleteMultipartUpload API operation concatenates the parts that you provide in the list. The processing of a CompleteMultipartUpload request could take several minutes to \ufb01nalize. Amazon S3 Amazon Simple Storage Service API Reference  These endpoints support virtual-hosted-style requests in the format https://amzn-s3-demo-bucket.s3express-zone-id.region- code.amazonaws.com/key-name . Amazon S3 Amazon Simple Storage Service API Reference These endpoints support virtual-hosted-style requests in the format https://amzn-s3-demo-bucket.s3express-zone-id.region- code.amazonaws.com/key-name . Permissions \u2022 General purpose bucket permissions - For information about permissions required to use the multipart upload API, see Multipart Upload and Permissions in the Amazon S3 User Guide.",
+      "preserved_entities": [
+        "the following topics",
+        "the sdk clients",
+        "credentials that aws can use to",
+        "the aws cli in the amazon",
+        "your requests",
+        "authenticated access",
+        "multipart upload and permissions in the",
+        "a session token",
+        "the createsession api call on the",
+        "these endpoints",
+        "this header",
+        "an in progress multipart upload",
+        "buckets for storage transfers and usage",
+        "the parts that you provide in",
+        "several minutes",
+        "the completemultipartupload api operation",
+        "using requester",
+        "the processing of a completemultipartupload request"
+      ],
+      "preserved_akus": [
+        {
+          "subject": "Authenticated access",
+          "predicate": "require",
+          "object": "credentials that AWS can use to"
+        },
+        {
+          "subject": "the SDK clients",
+          "predicate": "authenticate",
+          "object": "your requests"
+        },
+        {
+          "subject": "the following topics",
+          "predicate": "Set",
+          "object": "the AWS CLI in the Amazon"
+        },
+        {
+          "subject": "These endpoints",
+          "predicate": "support",
+          "object": "virtual hosted style requests in the"
+        },
+        {
+          "subject": "Permissions General purpose bucket permissions For",
+          "predicate": "see",
+          "object": "Multipart Upload and Permissions in the"
+        },
+        {
+          "subject": "the CreateSession API call on the",
+          "predicate": "obtain",
+          "object": "a session token"
+        },
+        {
+          "subject": "Permissions General purpose bucket permissions For",
+          "predicate": "see",
+          "object": "Multipart Upload and Permissions in the"
+        },
+        {
+          "subject": "the CreateSession API call on the",
+          "predicate": "obtain",
+          "object": "a session token"
+        },
+        {
+          "subject": "this header",
+          "predicate": "abort",
+          "object": "an in progress multipart upload"
+        },
+        {
+          "subject": "Using Requester",
+          "predicate": "pay",
+          "object": "buckets for storage transfers and usage"
+        },
+        {
+          "subject": "The CompleteMultipartUpload API operation",
+          "predicate": "concatenate",
+          "object": "the parts that you provide in"
+        },
+        {
+          "subject": "The processing of a CompleteMultipartUpload request",
+          "predicate": "take",
+          "object": "several minutes"
+        },
+        {
+          "subject": "These endpoints",
+          "predicate": "support",
+          "object": "virtual hosted style requests in the"
+        },
+        {
+          "subject": "These endpoints",
+          "predicate": "support",
+          "object": "virtual hosted style requests in the"
+        },
+        {
+          "subject": "Permissions General purpose bucket permissions",
+          "predicate": "see",
+          "object": "Multipart Upload and Permissions in the"
+        },
+        {
+          "subject": "the CreateSession API call on the",
+          "predicate": "obtain",
+          "object": "a session token"
+        }
+      ],
+      "token_count": 497,
+      "doc_id": "AWS-Document"
+    }
+  ],
+  "level_3_documents": [
+    {
+      "doc_id": "AWS-Document",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "top_entities": [
+        "multipart upload and permissions in the",
+        "a session token",
+        "virtual hosted style requests in the",
+        "the createsession api call on the",
+        "these endpoints",
+        "permissions general purpose bucket permissions for",
+        "another createsession api call",
+        "this parameter",
+        "bucket owners",
+        "a new session token for use"
+      ],
+      "top_relationships": [
+        {
+          "source": "authenticated access",
+          "relation": "require",
+          "target": "credentials that aws can use to"
+        },
+        {
+          "source": "the sdk clients",
+          "relation": "authenticate",
+          "target": "your requests"
+        },
+        {
+          "source": "the following topics",
+          "relation": "Set",
+          "target": "the aws cli in the amazon"
+        },
+        {
+          "source": "these endpoints",
+          "relation": "support",
+          "target": "virtual hosted style requests in the"
+        },
+        {
+          "source": "the createsession api call on the",
+          "relation": "obtain",
+          "target": "a session token"
+        }
+      ],
+      "token_count": 41
+    }
+  ],
+  "level_2_topics": [
+    {
+      "topic_id": "t0",
+      "label": "@param bucket_policy [Aws::S3::BucketPolicy] A bucket policy object",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate requests .",
+      "token_count": 40
+    },
+    {
+      "topic_id": "t1",
+      "label": "Making requests over IPv6",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) Use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 39
+    },
+    {
+      "topic_id": "t2",
+      "label": "S3 API Reference",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) Use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate requests .",
+      "token_count": 38
+    },
+    {
+      "topic_id": "t3",
+      "label": "Check whether the bucket already exists.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate requests .",
+      "token_count": 40
+    },
+    {
+      "topic_id": "t4",
+      "label": "Configure logging",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) Use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 39
+    },
+    {
+      "topic_id": "t5",
+      "label": "Constants",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate requests .",
+      "token_count": 40
+    },
+    {
+      "topic_id": "t6",
+      "label": "Deletes the CORS configuration of a bucket.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate requests .",
+      "token_count": 40
+    },
+    {
+      "topic_id": "t7",
+      "label": "Deletes the objects in an Amazon S3 bucket and deletes the bucket.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 41
+    },
+    {
+      "topic_id": "t8",
+      "label": "Example usage:",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) Use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate requests .",
+      "token_count": 38
+    },
+    {
+      "topic_id": "t9",
+      "label": "Enabled\n\u2022 For API details, see GetObjectLockCon\ufb01guration in AWS Tools for PowerShell Cmdlet \nReference (V4).\nTools for PowerShell V5\nExample 1: This command returns the value 'Enabled' if Object lock con\ufb01guration is \nenabled for the given S3 bucket.\nGet-S3ObjectLockConfiguration -BucketName 'amzn-s3-demo-bucket' -Select \n ObjectLockConfiguration.ObjectLockEnabled\nOutput:\nValue\nBasics Amazon Simple Storage Service API Reference",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 41
+    },
+    {
+      "topic_id": "t10",
+      "label": "Learn more about the AWS CLI",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) Use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 39
+    },
+    {
+      "topic_id": "t11",
+      "label": "Specifying the Signature Version in request authentication",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) Use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 39
+    },
+    {
+      "topic_id": "t12",
+      "label": "Execute the main function",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) Use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate requests .",
+      "token_count": 38
+    },
+    {
+      "topic_id": "t13",
+      "label": "Gets the CORS configuration of a bucket.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 41
+    },
+    {
+      "topic_id": "t14",
+      "label": "Gets the policy of a bucket.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 41
+    },
+    {
+      "topic_id": "t15",
+      "label": "Lists the keys and ETags for the objects in an Amazon S3 bucket.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate requests .",
+      "token_count": 40
+    },
+    {
+      "topic_id": "t16",
+      "label": "Runs the Amazon S3 getting started scenario.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 41
+    },
+    {
+      "topic_id": "t17",
+      "label": "Sets CORS rules on a bucket.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 41
+    },
+    {
+      "topic_id": "t18",
+      "label": "Sets a policy on a bucket.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 41
+    },
+    {
+      "topic_id": "t19",
+      "label": "These configuration attributes affect only downloads.",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate requests .",
+      "token_count": 40
+    },
+    {
+      "topic_id": "t20",
+      "label": "shellcheck disable=SC2181",
+      "summary": " This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) Use any toolkit that supports HTTP to use the REST API . Authenticated access requires credentials that AWS can use to authenticate your requests .",
+      "token_count": 39
+    }
+  ],
+  "level_1_categories": [
+    {
+      "category": "Storage",
+      "summary": "Storage includes services such as @param bucket_policy [Aws::S3::BucketPolicy] A bucket policy object, Making requests over IPv6, S3 API Reference, Check whether the bucket already exists., Configure logging. Key functionalities include This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use any toolkit that.",
+      "token_count": 50
+    }
+  ],
+  "level_0_global": "This guide explains the Amazon Simple Storage Service (Amazon S3) application programming interface (API) You can use.",
+  "validation_reports": {
+    "L4_sec_master": {
+      "entity_coverage": {
+        "passed": true,
+        "coverage": 1.0,
+        "found": [
+          "the following topics",
+          "the sdk clients",
+          "credentials that aws can use to",
+          "the aws cli in the amazon",
+          "your requests",
+          "authenticated access",
+          "multipart upload and permissions in the",
+          "a session token",
+          "the createsession api call on the",
+          "these endpoints",
+          "this header",
+          "an in progress multipart upload",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request"
+        ],
+        "missing": []
+      },
+      "aku_fact_check": {
+        "passed": true,
+        "preservation": 0.625,
+        "preserved": [
+          {
+            "subject": "Authenticated access",
+            "predicate": "require",
+            "object": "credentials that AWS can use to"
+          },
+          {
+            "subject": "the SDK clients",
+            "predicate": "authenticate",
+            "object": "your requests"
+          },
+          {
+            "subject": "the following topics",
+            "predicate": "Set",
+            "object": "the AWS CLI in the Amazon"
+          },
+          {
+            "subject": "the CreateSession API call on the",
+            "predicate": "obtain",
+            "object": "a session token"
+          },
+          {
+            "subject": "the CreateSession API call on the",
+            "predicate": "obtain",
+            "object": "a session token"
+          },
+          {
+            "subject": "this header",
+            "predicate": "abort",
+            "object": "an in progress multipart upload"
+          },
+          {
+            "subject": "Using Requester",
+            "predicate": "pay",
+            "object": "buckets for storage transfers and usage"
+          },
+          {
+            "subject": "The CompleteMultipartUpload API operation",
+            "predicate": "concatenate",
+            "object": "the parts that you provide in"
+          },
+          {
+            "subject": "The processing of a CompleteMultipartUpload request",
+            "predicate": "take",
+            "object": "several minutes"
+          },
+          {
+            "subject": "the CreateSession API call on the",
+            "predicate": "obtain",
+            "object": "a session token"
+          }
+        ],
+        "missing": [
+          {
+            "subject": "These endpoints",
+            "predicate": "support",
+            "object": "virtual hosted style requests in the"
+          },
+          {
+            "subject": "Permissions General purpose bucket permissions For",
+            "predicate": "see",
+            "object": "Multipart Upload and Permissions in the"
+          },
+          {
+            "subject": "Permissions General purpose bucket permissions For",
+            "predicate": "see",
+            "object": "Multipart Upload and Permissions in the"
+          },
+          {
+            "subject": "These endpoints",
+            "predicate": "support",
+            "object": "virtual hosted style requests in the"
+          },
+          {
+            "subject": "These endpoints",
+            "predicate": "support",
+            "object": "virtual hosted style requests in the"
+          },
+          {
+            "subject": "Permissions General purpose bucket permissions",
+            "predicate": "see",
+            "object": "Multipart Upload and Permissions in the"
+          }
+        ]
+      },
+      "numerical_accuracy": {
+        "passed": true,
+        "accuracy": 1.0,
+        "verified": [],
+        "suspect": []
+      },
+      "overall_passed": true
+    },
+    "L3_AWS-Document": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0,
+        "found": [],
+        "missing": [
+          "multipart upload and permissions in the",
+          "a session token",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "permissions general purpose bucket permissions for",
+          "another createsession api call",
+          "this parameter",
+          "bucket owners",
+          "a new session token for use"
+        ]
+      },
+      "relationship_consistency": {
+        "passed": false,
+        "consistency": 0.2,
+        "reflected": [
+          {
+            "source": "authenticated access",
+            "relation": "require",
+            "target": "credentials that aws can use to"
+          }
+        ],
+        "missing": [
+          {
+            "source": "the sdk clients",
+            "relation": "authenticate",
+            "target": "your requests"
+          },
+          {
+            "source": "the following topics",
+            "relation": "Set",
+            "target": "the aws cli in the amazon"
+          },
+          {
+            "source": "these endpoints",
+            "relation": "support",
+            "target": "virtual hosted style requests in the"
+          },
+          {
+            "source": "the createsession api call on the",
+            "relation": "obtain",
+            "target": "a session token"
+          }
+        ]
+      },
+      "numerical_accuracy": {
+        "passed": true,
+        "accuracy": 1.0,
+        "verified": [],
+        "suspect": []
+      },
+      "overall_passed": false
+    },
+    "L2_t0": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0645,
+        "found": [
+          "credentials that aws can use to",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "your requests",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t1": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t2": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0645,
+        "found": [
+          "credentials that aws can use to",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "your requests",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t3": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0645,
+        "found": [
+          "credentials that aws can use to",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "your requests",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t4": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t5": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0645,
+        "found": [
+          "credentials that aws can use to",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "your requests",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t6": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0645,
+        "found": [
+          "credentials that aws can use to",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "your requests",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t7": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t8": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0645,
+        "found": [
+          "credentials that aws can use to",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "your requests",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t9": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t10": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t11": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t12": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0645,
+        "found": [
+          "credentials that aws can use to",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "your requests",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t13": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t14": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t15": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0645,
+        "found": [
+          "credentials that aws can use to",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "your requests",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t16": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t17": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t18": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t19": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0645,
+        "found": [
+          "credentials that aws can use to",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "your requests",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L2_t20": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0968,
+        "found": [
+          "credentials that aws can use to",
+          "your requests",
+          "authenticated access"
+        ],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "the aws cli in the amazon",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L1_Storage": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0,
+        "found": [],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "credentials that aws can use to",
+          "the aws cli in the amazon",
+          "your requests",
+          "authenticated access",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "overall_passed": false
+    },
+    "L0_global": {
+      "entity_coverage": {
+        "passed": false,
+        "coverage": 0.0,
+        "found": [],
+        "missing": [
+          "the following topics",
+          "the sdk clients",
+          "credentials that aws can use to",
+          "the aws cli in the amazon",
+          "your requests",
+          "authenticated access",
+          "multipart upload and permissions in the",
+          "a session token",
+          "permissions general purpose bucket permissions for",
+          "virtual hosted style requests in the",
+          "the createsession api call on the",
+          "these endpoints",
+          "another createsession api call",
+          "the format bucket base name zone",
+          "this parameter",
+          "bucket owners",
+          "this header",
+          "an in progress multipart upload",
+          "bucket names",
+          "a new session token for use",
+          "the actual owner of the bucket",
+          "the account id that you provide",
+          "buckets for storage transfers and usage",
+          "the parts that you provide in",
+          "several minutes",
+          "the completemultipartupload api operation",
+          "using requester",
+          "the processing of a completemultipartupload request",
+          "permissions general purpose bucket permissions",
+          "the following aws regions",
+          "this change us east n. california"
+        ]
+      },
+      "numerical_accuracy": {
+        "passed": true,
+        "accuracy": 1.0,
+        "verified": [],
+        "suspect": []
+      },
+      "overall_passed": false
+    }
+  },
+  "timing": {
+    "level_4": 0.843,
+    "level_3": 113.366,
+    "level_2": 137.529,
+    "level_1": 0.001,
+    "level_0": 3.017
+  }
+}

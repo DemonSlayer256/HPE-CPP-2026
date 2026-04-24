@@ -1,3 +1,46 @@
 # docs/
 gitignore
 organize_data.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project outputs
+output.json
+results/
+
+# Model cache (large files)
+*.bin
+*.safetensors
+
+# Logs
+*.log
+
+hpe_cpp/
+
+compression_pipeline/module3/transform_output.py
