@@ -1,0 +1,3294 @@
+[
+  {
+    "chunk_id": "c0",
+    "akus": [
+      [
+        "Amazon S3 API",
+        "supports",
+        "REST API"
+      ],
+      [
+        "SOAP over HTTP",
+        "is deprecated",
+        "Amazon S3 API"
+      ],
+      [
+        "SOAP",
+        "is available over",
+        "HTTPS"
+      ],
+      [
+        "New Amazon S3 features",
+        "will not be supported for",
+        "SOAP"
+      ],
+      [
+        "AWS SDKs",
+        "authenticate",
+        "requests"
+      ],
+      [
+        "AWS SDKs",
+        "calculate",
+        "signature for request authentication"
+      ],
+      [
+        "PUT request header",
+        "is limited to",
+        "8 KB in size"
+      ],
+      [
+        "System-defined metadata",
+        "is limited to",
+        "2 KB in size"
+      ],
+      [
+        "System-defined metadata size",
+        "is measured by",
+        "sum of bytes in US-ASCII encoding of each key and value"
+      ],
+      [
+        "Direct REST API calls",
+        "requires",
+        "creating a signature using valid credentials"
+      ],
+      [
+        "S3 permissions",
+        "are granted through",
+        "AWS Identity and Access Management (IAM) policy"
+      ],
+      [
+        "S3 permissions",
+        "are granted through",
+        "bucket policy"
+      ],
+      [
+        "Root user credentials",
+        "have",
+        "all S3 permissions"
+      ],
+      [
+        "Using root user credentials",
+        "is not recommended for",
+        "S3 access"
+      ],
+      [
+        "IAM roles",
+        "manage",
+        "user permissions"
+      ],
+      [
+        "Amazon S3 API operations",
+        "apply",
+        "bucket-level actions"
+      ],
+      [
+        "Amazon S3 API operations",
+        "apply",
+        "object-level actions"
+      ],
+      [
+        "Amazon S3 Control API operations",
+        "manage",
+        "all other S3 resources"
+      ],
+      [
+        "Amazon S3 on Outposts API operations",
+        "are for use with",
+        "Amazon S3 on Outposts"
+      ],
+      [
+        "Outposts bucket",
+        "communicates using",
+        "access point"
+      ],
+      [
+        "Outposts bucket",
+        "communicates using",
+        "endpoint connection over VPC"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c1",
+    "akus": [
+      [
+        "Amazon S3",
+        "supports",
+        "API operations that apply bucket-level and object-level actions"
+      ],
+      [
+        "Amazon S3 Control",
+        "supports",
+        "API operations for managing all other S3 resources"
+      ],
+      [
+        "Amazon S3 on Outposts",
+        "supports",
+        "API operations for use with Amazon S3 on Outposts"
+      ],
+      [
+        "Amazon S3 Tables",
+        "supports",
+        "API operations for use with Amazon S3 Tables"
+      ],
+      [
+        "Amazon S3 Vectors",
+        "supports",
+        "API operations for use with Amazon S3 Vectors"
+      ],
+      [
+        "S3 Files",
+        "supports",
+        "API operations"
+      ],
+      [
+        "Amazon S3",
+        "has",
+        "Data types of API operations that apply bucket-level and object-level actions"
+      ],
+      [
+        "Amazon S3 Control",
+        "has",
+        "Data types of API operations for managing all other S3 resources"
+      ],
+      [
+        "Amazon S3 on Outposts",
+        "has",
+        "Data types of API operations for use with Amazon S3 on Outposts"
+      ],
+      [
+        "Amazon S3 Tables",
+        "has",
+        "Data types of API operations for use with Amazon S3 Tables"
+      ],
+      [
+        "Amazon S3 Vectors",
+        "has",
+        "Data types of API operations for use with Amazon S3 Vectors"
+      ],
+      [
+        "S3 Files",
+        "has",
+        "Data types of API operations"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c2",
+    "akus": [
+      [
+        "AbortMultipartUpload operation",
+        "aborts",
+        "a multipart upload"
+      ],
+      [
+        "After multipart upload is aborted",
+        "no additional parts",
+        "can be uploaded using that upload ID"
+      ],
+      [
+        "After multipart upload is aborted",
+        "storage consumed by previously uploaded parts",
+        "will be freed"
+      ],
+      [
+        "To verify all parts have been removed",
+        "call",
+        "ListParts API operation"
+      ],
+      [
+        "To prevent getting charged for part storage",
+        "call",
+        "ListParts API operation"
+      ],
+      [
+        "Directory buckets",
+        "cannot be deleted until",
+        "all in-progress multipart uploads are aborted or completed"
+      ],
+      [
+        "ListMultipartUploads operation",
+        "lists",
+        "in-progress multipart uploads in a directory bucket"
+      ],
+      [
+        "AbortMultipartUpload operation",
+        "aborts",
+        "in-progress multipart uploads in a directory bucket"
+      ],
+      [
+        "Upload ID",
+        "identifies",
+        "the multipart upload"
+      ],
+      [
+        "x-amz-if-match-initiated-time header",
+        "aborts",
+        "in-progress multipart upload"
+      ],
+      [
+        "x-amz-if-match-initiated-time header",
+        "requires",
+        "multipart upload initiated on provided timestamp"
+      ],
+      [
+        "Operation",
+        "returns",
+        "412 Precondition Failed error if initiated timestamp does not match"
+      ],
+      [
+        "Operation",
+        "returns",
+        "204 Success (No Content) response if initiated timestamp matches"
+      ],
+      [
+        "Operation",
+        "returns",
+        "204 Success (No Content) response if multipart upload doesn't exist"
+      ],
+      [
+        "Service",
+        "sends back",
+        "HTTP 204 response if action is successful"
+      ],
+      [
+        "NoSuchUpload error",
+        "indicates",
+        "specified multipart upload does not exist"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c3",
+    "akus": [
+      [
+        "CompleteMultipartUpload operation",
+        "completes",
+        "a multipart upload"
+      ],
+      [
+        "CompleteMultipartUpload operation",
+        "assembles",
+        "previously uploaded parts"
+      ],
+      [
+        "Before calling CompleteMultipartUpload",
+        "initiate",
+        "multipart upload"
+      ],
+      [
+        "Before calling CompleteMultipartUpload",
+        "upload all parts using",
+        "UploadPart operation"
+      ],
+      [
+        "Before calling CompleteMultipartUpload",
+        "upload all parts using",
+        "UploadPartCopy operation"
+      ],
+      [
+        "CompleteMultipartUpload operation",
+        "concatenates",
+        "all parts in ascending order by part number"
+      ],
+      [
+        "CompleteMultipartUpload request",
+        "must provide",
+        "parts list"
+      ],
+      [
+        "CompleteMultipartUpload request",
+        "must ensure",
+        "parts list is complete"
+      ],
+      [
+        "For each part in the list",
+        "must provide",
+        "PartNumber value"
+      ],
+      [
+        "For each part in the list",
+        "must provide",
+        "ETag value"
+      ],
+      [
+        "Processing a CompleteMultipartUpload request",
+        "could take",
+        "several minutes to finalize"
+      ],
+      [
+        "Amazon S3",
+        "sends",
+        "HTTP response header with 200 OK after beginning processing"
+      ],
+      [
+        "Amazon S3",
+        "sends",
+        "white space characters periodically to prevent connection timeout"
+      ],
+      [
+        "A request",
+        "could fail after",
+        "initial 200 OK response has been sent"
+      ],
+      [
+        "200 OK response",
+        "can contain",
+        "success or error"
+      ],
+      [
+        "Applications",
+        "should parse",
+        "response contents and handle appropriately if calling API directly"
+      ],
+      [
+        "AWS SDKs",
+        "handle",
+        "embedded errors and apply error handling"
+      ],
+      [
+        "AWS SDKs",
+        "retry",
+        "failed requests automatically"
+      ],
+      [
+        "Applications",
+        "should be prepared to retry",
+        "failed requests (including 500 error responses) if CompleteMultipartUpload fails"
+      ],
+      [
+        "Content-Type: application/x-www-form-urlencoded",
+        "cannot be used for",
+        "CompleteMultipartUpload requests"
+      ],
+      [
+        "CompleteMultipartUpload",
+        "can return",
+        "200 OK response without Content-Type header"
+      ],
+      [
+        "If object is encrypted with AWS KMS and checksum value provided",
+        "requires",
+        "kms:Decrypt permission for CompleteMultipartUpload to succeed"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c4",
+    "akus": [
+      [
+        "EntityTooSmall error",
+        "describes",
+        "proposed upload is smaller than minimum allowed object size"
+      ],
+      [
+        "Each part",
+        "must be",
+        "at least 5 MB in size"
+      ],
+      [
+        "Last part",
+        "is exempt from",
+        "5 MB minimum size"
+      ],
+      [
+        "InvalidPart error",
+        "describes",
+        "one or more specified parts could not be found"
+      ],
+      [
+        "InvalidPart error",
+        "describes",
+        "part might not have been uploaded"
+      ],
+      [
+        "InvalidPart error",
+        "describes",
+        "specified ETag might not have matched uploaded part's ETag"
+      ],
+      [
+        "InvalidPartOrder error",
+        "describes",
+        "list of parts was not in ascending order"
+      ],
+      [
+        "Parts list",
+        "must be specified in order by",
+        "part number"
+      ],
+      [
+        "NoSuchUpload error",
+        "describes",
+        "specified multipart upload does not exist"
+      ],
+      [
+        "NoSuchUpload error",
+        "describes",
+        "upload ID might be invalid"
+      ],
+      [
+        "Upload ID",
+        "identifies",
+        "initiated multipart upload"
+      ],
+      [
+        "ETag value provided during WRITE operation",
+        "must match",
+        "ETag of object in S3 for upload to succeed"
+      ],
+      [
+        "Operation",
+        "returns",
+        "412 Precondition Failed error if ETag values do not match"
+      ],
+      [
+        "Concurrent operation during upload",
+        "returns",
+        "409 ConditionalRequestConflict response"
+      ],
+      [
+        "On 409 failure",
+        "should fetch",
+        "object's ETag"
+      ],
+      [
+        "On 409 failure",
+        "should re-initiate",
+        "multipart upload with CreateMultipartUpload"
+      ],
+      [
+        "On 409 failure",
+        "should re-upload",
+        "each part"
+      ],
+      [
+        "Object key name",
+        "must not already exist in bucket",
+        "for upload to succeed"
+      ],
+      [
+        "Amazon S3",
+        "returns",
+        "412 Precondition Failed error if object key name already exists"
+      ],
+      [
+        "x-amz-mp-object-size header",
+        "specifies",
+        "expected total object size of multipart upload request"
+      ],
+      [
+        "Mismatch between specified and actual object size",
+        "results in",
+        "HTTP 400 InvalidRequest error"
+      ],
+      [
+        "Server-side encryption algorithm",
+        "is required",
+        "only when object was created using checksum algorithm"
+      ],
+      [
+        "Server-side encryption algorithm",
+        "is required",
+        "if bucket policy requires use of SSE-C"
+      ],
+      [
+        "Server-side encryption customer managed key",
+        "is needed",
+        "only when object was created using checksum algorithm"
+      ],
+      [
+        "MD5 server-side encryption customer managed key",
+        "is needed",
+        "only when object was created using checksum algorithm"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "Location (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "Bucket (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "Key (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "ETag (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "ChecksumCRC32 (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "ChecksumCRC32C (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "ChecksumSHA1 (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "ChecksumSHA256 (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "ServerSideEncryption (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "VersionId (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "SSECustomerAlgorithm (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "SSECustomerKeyMD5 (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "SSEKMSKeyId (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "SSEKMSEncryptionContext (string)"
+      ],
+      [
+        "CompleteMultipartUploadResult parameters",
+        "include",
+        "BucketKeyEnabled (boolean)"
+      ],
+      [
+        "If object expiration is configured",
+        "contains",
+        "expiration date and rule ID"
+      ],
+      [
+        "Server-side encryption algorithm",
+        "is used when storing",
+        "this object in Amazon S3"
+      ],
+      [
+        "Version ID",
+        "is for",
+        "newly created object if bucket has versioning turned on"
+      ],
+      [
+        "Bucket name",
+        "contains",
+        "newly created object"
+      ],
+      [
+        "Access points",
+        "are not supported by",
+        "directory buckets"
+      ],
+      [
+        "CRC64NVME checksum",
+        "is always",
+        "full object checksum"
+      ],
+      [
+        "Checksum type",
+        "determines",
+        "how part-level checksums are combined to create object-level checksum"
+      ],
+      [
+        "Checksum type header",
+        "can be used as",
+        "data integrity check"
+      ],
+      [
+        "BadDigest error",
+        "results if",
+        "checksum type doesn\u2019t match specified type"
+      ],
+      [
+        "Entity tag",
+        "identifies",
+        "newly created object's data"
+      ],
+      [
+        "Objects with different object data",
+        "will have",
+        "different entity tags"
+      ],
+      [
+        "Entity tag",
+        "is",
+        "opaque string"
+      ],
+      [
+        "Entity tag",
+        "may or may not be",
+        "MD5 digest of object data"
+      ],
+      [
+        "Object key",
+        "is for",
+        "newly created object"
+      ],
+      [
+        "URI",
+        "identifies",
+        "newly created object"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c5",
+    "akus": [
+      [
+        "CopyObject",
+        "creates",
+        "a copy of an object"
+      ],
+      [
+        "Objects",
+        "can be stored up to",
+        "50 TB in Amazon S3"
+      ],
+      [
+        "CopyObject API",
+        "creates copy up to",
+        "5 GB in size"
+      ],
+      [
+        "To copy object greater than 5 GB",
+        "must use",
+        "Upload Part - Copy (UploadPartCopy) API"
+      ],
+      [
+        "Objects",
+        "can be copied between",
+        "general purpose buckets"
+      ],
+      [
+        "Objects",
+        "can be copied between",
+        "directory buckets"
+      ],
+      [
+        "Objects",
+        "can be copied between",
+        "general purpose buckets and directory buckets"
+      ],
+      [
+        "Amazon S3",
+        "supports",
+        "copy operations using Multi-Region Access Points as destination"
+      ],
+      [
+        "VPC endpoints",
+        "do not support",
+        "cross-Region requests"
+      ],
+      [
+        "Source and destination buckets",
+        "should be in",
+        "same AWS Region as VPC endpoint if using VPC endpoints"
+      ],
+      [
+        "Region for object copy source",
+        "must be enabled for",
+        "your account"
+      ],
+      [
+        "Region for object copy destination",
+        "must be enabled for",
+        "your account"
+      ],
+      [
+        "Amazon S3 transfer acceleration",
+        "does not support",
+        "cross-Region copies"
+      ],
+      [
+        "Requesting cross-Region copy using transfer acceleration endpoint",
+        "gets",
+        "400 Bad Request error"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c6",
+    "akus": [
+      [
+        "All CopyObject requests",
+        "must be authenticated using",
+        "IAM credentials"
+      ],
+      [
+        "All CopyObject requests",
+        "must be signed using",
+        "IAM credentials"
+      ],
+      [
+        "Headers with x-amz-prefix",
+        "must be signed",
+        "for CopyObject requests"
+      ],
+      [
+        "x-amz-copy-source header",
+        "must be signed",
+        "for CopyObject requests"
+      ],
+      [
+        "Directory buckets",
+        "must use",
+        "IAM credentials for authentication and authorization of CopyObject"
+      ],
+      [
+        "Directory buckets",
+        "cannot use",
+        "temporary security credentials through CreateSession API for CopyObject"
+      ],
+      [
+        "AWS CLI",
+        "handles",
+        "authentication and authorization for CopyObject"
+      ],
+      [
+        "AWS SDKs",
+        "handles",
+        "authentication and authorization for CopyObject"
+      ],
+      [
+        "You",
+        "must have",
+        "read access to the source object"
+      ],
+      [
+        "You",
+        "must have",
+        "write access to the destination bucket"
+      ],
+      [
+        "General purpose bucket permissions",
+        "requires",
+        "permissions in an IAM policy based on source and destination bucket types"
+      ],
+      [
+        "If source object is in general purpose bucket",
+        "must have",
+        "s3:GetObject permission to read source object"
+      ],
+      [
+        "If destination bucket is general purpose bucket",
+        "must have",
+        "s3:PutObject permission to write object copy"
+      ],
+      [
+        "Directory bucket permissions",
+        "requires",
+        "permissions in bucket policy or IAM identity-based policy"
+      ],
+      [
+        "If source object is in directory bucket",
+        "must have",
+        "s3express:CreateSession permission to read object"
+      ],
+      [
+        "s3express:SessionMode condition key",
+        "can be set to",
+        "ReadOnly on copy source bucket"
+      ],
+      [
+        "If copy destination is directory bucket",
+        "must have",
+        "s3express:CreateSession permission to write object"
+      ],
+      [
+        "s3express:SessionMode condition key",
+        "cannot be set to",
+        "ReadOnly on copy destination bucket"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c7",
+    "akus": [
+      [
+        "Response",
+        "is chunk encoded",
+        "when request is HTTP 1.1"
+      ],
+      [
+        "Response",
+        "would not contain",
+        "Content-Length when request is not HTTP 1.1"
+      ],
+      [
+        "You",
+        "always need to read",
+        "entire response body to check if copy succeeds"
+      ],
+      [
+        "If copy is successful",
+        "receive",
+        "response with information about copied object"
+      ],
+      [
+        "Copy request",
+        "might return",
+        "an error when Amazon S3 receives request"
+      ],
+      [
+        "Copy request",
+        "might return",
+        "an error while Amazon S3 is copying files"
+      ],
+      [
+        "200 OK response",
+        "can contain",
+        "success or error"
+      ],
+      [
+        "If error occurs before copy action starts",
+        "receive",
+        "standard Amazon S3 error"
+      ],
+      [
+        "If error occurs during copy operation",
+        "error response is embedded in",
+        "200 OK response"
+      ],
+      [
+        "200 OK status code",
+        "means",
+        "copy was accepted"
+      ],
+      [
+        "200 OK status code",
+        "does not mean",
+        "copy is complete"
+      ],
+      [
+        "You",
+        "must stay connected to",
+        "Amazon S3 until entire response is received and processed"
+      ],
+      [
+        "Applications",
+        "should parse",
+        "content of response and handle appropriately if calling API directly"
+      ],
+      [
+        "AWS SDKs",
+        "detect",
+        "embedded error and apply error handling"
+      ],
+      [
+        "AWS SDKs",
+        "retry",
+        "request automatically"
+      ],
+      [
+        "Copy request charge",
+        "is based on",
+        "storage class of destination object"
+      ],
+      [
+        "Copy request charge",
+        "is based on",
+        "Region of destination object"
+      ],
+      [
+        "Request",
+        "can result in",
+        "data retrieval charge for source if source storage class bills for data retrieval"
+      ],
+      [
+        "If copy source is in different region",
+        "data transfer is billed to",
+        "copy source account"
+      ],
+      [
+        "Directory buckets",
+        "use",
+        "HTTP Host header syntax Bucket-name.s3express-zone-id.region-code.amazonaws.com"
+      ],
+      [
+        "S3 on Outposts",
+        "must direct requests to",
+        "S3 on Outposts hostname when using REST API"
+      ],
+      [
+        "S3 on Outposts hostname",
+        "takes the form",
+        "AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com"
+      ],
+      [
+        "Hostname",
+        "isn't required",
+        "when using AWS CLI or SDKs for S3 on Outposts"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c8",
+    "akus": [
+      [
+        "Destination bucket",
+        "is specified by",
+        "name"
+      ],
+      [
+        "Copying objects",
+        "is not supported across different AWS Regions",
+        "when source or destination bucket is in AWS Local Zones"
+      ],
+      [
+        "Source and destination buckets",
+        "must have",
+        "same parent AWS Region in AWS Local Zones"
+      ],
+      [
+        "HTTP 400 Bad Request error with InvalidRequest code",
+        "results if",
+        "source and destination buckets have different parent AWS Region"
+      ],
+      [
+        "S3 on Outposts CopyObject action",
+        "must use",
+        "Outpost bucket access point ARN for destination bucket"
+      ],
+      [
+        "S3 on Outposts CopyObject action",
+        "must use",
+        "access point alias for destination bucket"
+      ],
+      [
+        "Objects",
+        "can only be copied within",
+        "same Outpost bucket"
+      ],
+      [
+        "Copying objects",
+        "is not supported across different AWS Outposts"
+      ],
+      [
+        "Copying objects",
+        "is not supported between buckets on same Outposts"
+      ],
+      [
+        "Copying objects",
+        "is not supported between Outposts buckets and any other bucket types"
+      ],
+      [
+        "CopyObject action with S3 on Outposts",
+        "must direct requests to",
+        "S3 on Outposts hostname when using REST API"
+      ],
+      [
+        "S3 on Outposts hostname",
+        "format is",
+        "AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com"
+      ],
+      [
+        "Hostname",
+        "isn't required",
+        "when using AWS CLI or SDKs for S3 on Outposts"
+      ],
+      [
+        "Caching behavior",
+        "is specified by",
+        "cache-control header"
+      ],
+      [
+        "Presentational information for the object",
+        "is specified by",
+        "content-disposition header"
+      ],
+      [
+        "Content-Disposition header",
+        "indicates whether object should be",
+        "displayed in web browser"
+      ],
+      [
+        "Content-Disposition header",
+        "indicates whether object should be",
+        "downloaded as file"
+      ],
+      [
+        "Content-Disposition header",
+        "allows specifying",
+        "desired filename for downloaded file"
+      ],
+      [
+        "Directory buckets",
+        "support only",
+        "aws-chunked value in content-encoding header field"
+      ],
+      [
+        "Standard MIME type",
+        "describes",
+        "format of object data"
+      ],
+      [
+        "Object",
+        "is copied if",
+        "ETag of destination object matches specified tag"
+      ],
+      [
+        "Operation",
+        "returns",
+        "412 Precondition Failed error if ETag values do not match"
+      ],
+      [
+        "Concurrent operation during upload",
+        "returns",
+        "409 ConditionalRequestConflict response"
+      ],
+      [
+        "On 409 failure",
+        "should fetch",
+        "object's ETag and retry upload"
+      ],
+      [
+        "Object",
+        "is uploaded only if",
+        "object key name at destination does not already exist"
+      ],
+      [
+        "Amazon S3",
+        "returns",
+        "412 Precondition Failed error if object key name already exists"
+      ],
+      [
+        "On 409 failure",
+        "should retry",
+        "upload"
+      ],
+      [
+        "x-amz-checksum-algorithm header",
+        "indicates",
+        "algorithm for Amazon S3 to create checksum"
+      ],
+      [
+        "Checksum value",
+        "will be copied to new object by default",
+        "if source object has checksum"
+      ],
+      [
+        "Checksum algorithm",
+        "will be copied from source to destination",
+        "if x-amz-checksum-algorithm header not included"
+      ],
+      [
+        "Unrecognized or unsupported values",
+        "respond with",
+        "HTTP status code 400 Bad Request"
+      ],
+      [
+        "Directory buckets with AWS SDKs",
+        "use",
+        "CRC32 as default checksum algorithm"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c9",
+    "akus": [
+      [
+        "x-amz-copy-source header",
+        "specifies",
+        "source object for copy operation"
+      ],
+      [
+        "Source object",
+        "can be up to",
+        "5 GB"
+      ],
+      [
+        "If source object uploaded by multipart upload",
+        "object copy will be",
+        "single part object"
+      ],
+      [
+        "Value of copy source",
+        "is specified in",
+        "one of two formats"
+      ],
+      [
+        "For objects not accessed through access point",
+        "specify",
+        "name of source bucket and key of source object separated by slash"
+      ],
+      [
+        "Value",
+        "must be",
+        "URL-encoded"
+      ],
+      [
+        "For objects accessed through access points",
+        "specify",
+        "ARN of object"
+      ],
+      [
+        "ARN format",
+        "is",
+        "arn:aws:s3:<Region>:<account-id>:accesspoint/<access-point-name>/object/<key>"
+      ],
+      [
+        "Amazon S3",
+        "supports",
+        "copy operations using Access points only when source and destination buckets are in same AWS Region"
+      ],
+      [
+        "Access points",
+        "are not supported by",
+        "directory buckets"
+      ],
+      [
+        "For objects accessed through Amazon S3 on Outposts",
+        "specify",
+        "ARN of object"
+      ],
+      [
+        "ARN format for S3 on Outposts",
+        "is",
+        "arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/object/<key>"
+      ],
+      [
+        "If source bucket versioning is enabled",
+        "x-amz-copy-source header",
+        "identifies current version of an object to copy"
+      ],
+      [
+        "If current version is delete marker",
+        "Amazon S3",
+        "behaves as if object was deleted"
+      ],
+      [
+        "To copy different version",
+        "use",
+        "versionId query parameter"
+      ],
+      [
+        "If version ID not specified",
+        "Amazon S3",
+        "copies latest version of source object"
+      ],
+      [
+        "If versioning enabled on destination bucket",
+        "Amazon S3",
+        "generates unique version ID for copied object"
+      ],
+      [
+        "Version ID of copied object",
+        "is different from",
+        "version ID of source object"
+      ],
+      [
+        "Amazon S3",
+        "returns",
+        "version ID of copied object in x-amz-version-id response header"
+      ],
+      [
+        "If versioning not enabled or suspended on destination bucket",
+        "version ID in x-amz-version-id header",
+        "is always null"
+      ],
+      [
+        "S3 Versioning",
+        "isn't enabled and supported for",
+        "directory buckets"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c10",
+    "akus": [
+      [
+        "x-amz-copy-source-if-match header",
+        "copies",
+        "object if its ETag matches specified tag"
+      ],
+      [
+        "If x-amz-copy-source-if-match and x-amz-copy-source-if-unmodified-since headers are present (match=true, unmodified-since=false)",
+        "Amazon S3 returns",
+        "200 OK and copies data"
+      ],
+      [
+        "x-amz-copy-source-if-modified-since header",
+        "copies",
+        "object if it has been modified since specified time"
+      ],
+      [
+        "If x-amz-copy-source-if-none-match and x-amz-copy-source-if-modified-since headers are present (none-match=false, modified-since=true)",
+        "Amazon S3 returns",
+        "412 Precondition Failed response code"
+      ],
+      [
+        "x-amz-copy-source-if-none-match header",
+        "copies",
+        "object if its ETag is different than specified ETag"
+      ],
+      [
+        "x-amz-copy-source-if-unmodified-since header",
+        "copies",
+        "object if it hasn't been modified since specified time"
+      ],
+      [
+        "x-amz-copy-source-server-side-encryption-customer-algorithm header",
+        "specifies",
+        "algorithm to use when decrypting source object"
+      ],
+      [
+        "If source object stored using SSE-C",
+        "must provide",
+        "necessary encryption information in request to decrypt object"
+      ],
+      [
+        "x-amz-copy-source-server-side-encryption-customer-key header",
+        "specifies",
+        "customer-provided encryption key for Amazon S3 to use to decrypt source object"
+      ],
+      [
+        "Encryption key",
+        "must be",
+        "same one used when source object was created"
+      ],
+      [
+        "x-amz-copy-source-server-side-encryption-customer-key-MD5 header",
+        "requires",
+        "necessary encryption information in request if source object stored using SSE-C"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c11",
+    "akus": [
+      [
+        "x-amz-metadata-directive header",
+        "specifies whether",
+        "metadata is copied from source object"
+      ],
+      [
+        "x-amz-metadata-directive header",
+        "specifies whether",
+        "metadata is replaced with metadata provided in request"
+      ],
+      [
+        "When copying an object",
+        "can preserve",
+        "all metadata (default)"
+      ],
+      [
+        "When copying an object",
+        "can specify",
+        "new metadata"
+      ],
+      [
+        "If x-amz-metadata-directive header isn\u2019t specified",
+        "COPY",
+        "is the default behavior"
+      ],
+      [
+        "General purpose buckets",
+        "can use",
+        "s3:x-amz-metadata-directive condition key to enforce metadata behavior"
+      ],
+      [
+        "x-amz-website-redirect-location",
+        "is unique to",
+        "each object"
+      ],
+      [
+        "x-amz-website-redirect-location",
+        "is not copied when using",
+        "x-amz-metadata-directive header"
+      ],
+      [
+        "To copy x-amz-website-redirect-location value",
+        "must specify",
+        "x-amz-website-redirect-location in request header"
+      ],
+      [
+        "Valid Values for x-amz-metadata-directive",
+        "are",
+        "COPY"
+      ],
+      [
+        "Valid Values for x-amz-metadata-directive",
+        "are",
+        "REPLACE"
+      ],
+      [
+        "Legal hold",
+        "can be applied to",
+        "object copy"
+      ],
+      [
+        "Object Lock mode",
+        "can be applied to",
+        "object copy"
+      ],
+      [
+        "Date and time",
+        "can be specified for",
+        "Object Lock expiry of object copy"
+      ],
+      [
+        "Server-side encryption algorithm",
+        "is used when storing",
+        "this object in Amazon S3"
+      ],
+      [
+        "Unrecognized or unsupported values for server-side encryption algorithm",
+        "won\u2019t write",
+        "destination object"
+      ],
+      [
+        "Unrecognized or unsupported values for server-side encryption algorithm",
+        "will receive",
+        "400 Bad Request response"
+      ],
+      [
+        "Amazon S3",
+        "automatically encrypts",
+        "all new objects copied to an S3 bucket"
+      ],
+      [
+        "If encryption information not specified in copy request",
+        "encryption setting of target object",
+        "is set to default encryption configuration of destination bucket"
+      ],
+      [
+        "All buckets",
+        "have base level of encryption configuration that uses",
+        "SSE-S3 by default"
+      ],
+      [
+        "If destination bucket has different default encryption configuration",
+        "Amazon S3",
+        "uses corresponding encryption key to encrypt target object copy"
+      ],
+      [
+        "With server-side encryption",
+        "Amazon S3",
+        "encrypts data as it writes to disks"
+      ],
+      [
+        "With server-side encryption",
+        "Amazon S3",
+        "decrypts data when you access it"
+      ],
+      [
+        "General purpose buckets",
+        "support",
+        "SSE-KMS, DSSE-KMS, and SSE-C for server-side encryption"
+      ],
+      [
+        "When performing CopyObject operation",
+        "can specify",
+        "appropriate encryption-related headers to encrypt target object with different key"
+      ],
+      [
+        "If encryption setting in request is different from default",
+        "encryption setting in request",
+        "takes precedence"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c12",
+    "akus": [
+      [
+        "Directory buckets",
+        "support only",
+        "SSE-S3 (AES256) for server-side encryption"
+      ],
+      [
+        "Directory buckets",
+        "support only",
+        "SSE-KMS (aws:kms) for server-side encryption"
+      ],
+      [
+        "For directory buckets",
+        "recommendation is",
+        "bucket's default encryption uses desired configuration"
+      ],
+      [
+        "For directory buckets",
+        "recommendation is not to",
+        "override bucket default encryption in CreateSession or PUT object requests"
+      ],
+      [
+        "New objects",
+        "are automatically encrypted with",
+        "desired encryption settings if default encryption is used"
+      ],
+      [
+        "To encrypt new object copies to directory bucket with SSE-KMS",
+        "recommendation is to",
+        "specify SSE-KMS as default encryption configuration with customer managed key"
+      ],
+      [
+        "AWS managed key (aws/s3)",
+        "isn't supported for",
+        "SSE-KMS in directory buckets"
+      ],
+      [
+        "SSE-KMS configuration",
+        "can only support",
+        "1 customer managed key per directory bucket for its lifetime"
+      ],
+      [
+        "After specifying customer managed key for SSE-KMS",
+        "cannot override",
+        "customer managed key for bucket's SSE-KMS configuration"
+      ],
+      [
+        "When performing CopyObject operation to directory bucket with SSE-KMS",
+        "encryption key in request headers",
+        "must be same customer managed key as bucket's default"
+      ],
+      [
+        "Amazon FSx file systems",
+        "automatically encrypt data",
+        "before being written"
+      ],
+      [
+        "Amazon FSx file systems",
+        "automatically decrypt data",
+        "as it is read"
+      ],
+      [
+        "x-amz-server-side-encryption-aws-kms-key-id header",
+        "specifies",
+        "AWS KMS key ID (Key ID, Key ARN, or Key Alias) for object encryption"
+      ],
+      [
+        "GET and PUT requests for KMS-protected object",
+        "will fail if not made via",
+        "SSL or SigV4"
+      ],
+      [
+        "Directory buckets to encrypt data using SSE-KMS",
+        "recommended to specify",
+        "x-amz-server-side-encryption header to aws:kms"
+      ],
+      [
+        "x-amz-server-side-encryption-aws-kms-key-id header",
+        "implicitly uses",
+        "bucket's default KMS customer managed key ID"
+      ],
+      [
+        "If x-amz-server-side-encryption-aws-kms-key-id header explicitly set for directory buckets",
+        "must match",
+        "bucket's default customer managed key (using key ID or ARN)"
+      ],
+      [
+        "Incorrect key specification",
+        "results in",
+        "HTTP 400 Bad Request error"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c13",
+    "akus": [
+      [
+        "Setting x-amz-server-side-encryption-bucket-key-enabled header to true",
+        "causes Amazon S3 to use",
+        "S3 Bucket Key for object encryption with SSE-KMS"
+      ],
+      [
+        "Specifying x-amz-server-side-encryption-bucket-key-enabled header with COPY action",
+        "doesn\u2019t affect",
+        "bucket-level settings for S3 Bucket Key"
+      ],
+      [
+        "S3 Bucket Keys",
+        "aren't supported",
+        "when copying SSE-KMS encrypted objects to/from directory buckets through CopyObject"
+      ],
+      [
+        "In unsupported S3 Bucket Key scenarios",
+        "Amazon S3 makes a call to",
+        "AWS KMS every time a copy request is made for KMS-encrypted object"
+      ],
+      [
+        "x-amz-server-side-encryption-context header",
+        "specifies",
+        "AWS KMS Encryption Context for destination object encryption"
+      ],
+      [
+        "Value of x-amz-server-side-encryption-context header",
+        "is",
+        "base64-encoded UTF-8 string holding JSON with encryption context key-value pairs"
+      ],
+      [
+        "General purpose buckets",
+        "must explicitly add",
+        "encryption context for CopyObject requests if additional encryption context desired"
+      ],
+      [
+        "Additional encryption context of source object",
+        "won't be copied to",
+        "destination object"
+      ],
+      [
+        "x-amz-source-expected-bucket-owner header",
+        "specifies",
+        "account ID of expected source bucket owner"
+      ],
+      [
+        "Request",
+        "fails with HTTP 403 Forbidden",
+        "if provided source account ID does not match actual owner"
+      ],
+      [
+        "If x-amz-storage-class header is not used",
+        "copied object will be stored in",
+        "STANDARD Storage Class by default"
+      ],
+      [
+        "STANDARD storage class",
+        "provides",
+        "high durability and high availability"
+      ],
+      [
+        "You",
+        "can specify",
+        "different Storage Class depending on performance needs"
+      ],
+      [
+        "Directory buckets",
+        "only support",
+        "EXPRESS_ONEZONE storage class in Availability Zones"
+      ],
+      [
+        "Directory buckets",
+        "only support",
+        "ONEZONE_IA storage class in Dedicated Local Zones"
+      ],
+      [
+        "Unsupported storage class values",
+        "won't write",
+        "destination object"
+      ],
+      [
+        "Unsupported storage class values",
+        "will respond with",
+        "HTTP status code 400 Bad Request"
+      ],
+      [
+        "S3 on Outposts",
+        "only uses",
+        "OUTPOSTS Storage Class"
+      ],
+      [
+        "CopyObject action",
+        "can be used to change",
+        "storage class of an object already in Amazon S3"
+      ],
+      [
+        "To change storage class",
+        "use",
+        "x-amz-storage-class header"
+      ],
+      [
+        "You",
+        "must restore",
+        "source object before using it for copy operation if storage class is GLACIER or DEEP_ARCHIVE"
+      ],
+      [
+        "You",
+        "must restore",
+        "source object before using it for copy operation if storage class is INTELLIGENT_TIERING and access tier is Archive Access or Deep Archive Access"
+      ],
+      [
+        "x-amz-tagging header",
+        "specifies",
+        "tag-set for object copy in destination bucket"
+      ],
+      [
+        "x-amz-tagging header",
+        "must be used in conjunction with",
+        "x-amz-tagging-directive if REPLACE chosen"
+      ],
+      [
+        "If COPY chosen for x-amz-tagging-directive",
+        "don't need to set",
+        "x-amz-tagging header"
+      ],
+      [
+        "Tag-set",
+        "must be encoded as",
+        "URL Query parameters"
+      ],
+      [
+        "Default value for x-amz-tagging",
+        "is",
+        "empty value"
+      ],
+      [
+        "Directory buckets in CopyObject operation",
+        "only support",
+        "empty tag-set"
+      ],
+      [
+        "Requests that attempt to write non-empty tags into directory buckets",
+        "will receive",
+        "501 Not Implemented status code"
+      ],
+      [
+        "When destination bucket is directory bucket",
+        "receive",
+        "501 Not Implemented response if attempting to COPY non-empty tag-set from S3 source object"
+      ],
+      [
+        "When destination bucket is directory bucket",
+        "receive",
+        "501 Not Implemented response if attempting to REPLACE tag-set of source object with non-empty value"
+      ],
+      [
+        "When destination bucket is directory bucket",
+        "receive",
+        "501 Not Implemented response if x-amz-tagging-directive not set and source object has non-empty tags"
+      ],
+      [
+        "Allowed situations for directory buckets",
+        "include",
+        "COPY tag-set from directory bucket source object with no tags to general purpose bucket"
+      ],
+      [
+        "Allowed situations for directory buckets",
+        "include",
+        "REPLACE tag-set of directory bucket source object and set x-amz-tagging value to empty"
+      ],
+      [
+        "Allowed situations for directory buckets",
+        "include",
+        "REPLACE tag-set of general purpose bucket source object with non-empty tags and set x-amz-tagging value to empty"
+      ],
+      [
+        "Allowed situations for directory buckets",
+        "include",
+        "REPLACE tag-set of directory bucket source object and don't set x-amz-tagging value"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c14",
+    "akus": [
+      [
+        "x-amz-tagging-directive header",
+        "specifies whether",
+        "object tag-set is copied from source object"
+      ],
+      [
+        "x-amz-tagging-directive header",
+        "specifies whether",
+        "object tag-set is replaced with tag-set provided in request"
+      ],
+      [
+        "Default value for x-amz-tagging-directive",
+        "is",
+        "COPY"
+      ],
+      [
+        "Directory buckets in CopyObject operation",
+        "only support",
+        "empty tag-set"
+      ],
+      [
+        "Requests that attempt to write non-empty tags into directory buckets",
+        "will receive",
+        "501 Not Implemented status code"
+      ],
+      [
+        "When destination bucket is directory bucket",
+        "receive",
+        "501 Not Implemented response if attempting to COPY non-empty tag-set from S3 source object"
+      ],
+      [
+        "When destination bucket is directory bucket",
+        "receive",
+        "501 Not Implemented response if attempting to REPLACE tag-set of source object with non-empty value"
+      ],
+      [
+        "When destination bucket is directory bucket",
+        "receive",
+        "501 Not Implemented response if x-amz-tagging-directive not set and source object has non-empty tags"
+      ],
+      [
+        "Allowed situations for directory buckets",
+        "include",
+        "COPY tag-set from directory bucket source object with no tags to general purpose bucket"
+      ],
+      [
+        "Allowed situations for directory buckets",
+        "include",
+        "REPLACE tag-set of directory bucket source object and set x-amz-tagging value to empty"
+      ],
+      [
+        "Allowed situations for directory buckets",
+        "include",
+        "REPLACE tag-set of general purpose bucket source object with non-empty tags and set x-amz-tagging value to empty"
+      ],
+      [
+        "Allowed situations for directory buckets",
+        "include",
+        "REPLACE tag-set of directory bucket source object and don't set x-amz-tagging value"
+      ],
+      [
+        "Valid Values for x-amz-tagging-directive",
+        "are",
+        "COPY"
+      ],
+      [
+        "Valid Values for x-amz-tagging-directive",
+        "are",
+        "REPLACE"
+      ],
+      [
+        "If destination bucket configured as website",
+        "redirects",
+        "requests for object copy to another object in same bucket"
+      ],
+      [
+        "If destination bucket configured as website",
+        "redirects",
+        "requests for object copy to an external URL"
+      ],
+      [
+        "Amazon S3",
+        "stores",
+        "value of x-amz-website-redirect-location header in object metadata"
+      ],
+      [
+        "x-amz-website-redirect-location value",
+        "is unique to",
+        "each object"
+      ],
+      [
+        "x-amz-website-redirect-location value",
+        "is not copied when using",
+        "x-amz-metadata-directive header"
+      ],
+      [
+        "x-amz-copy-source-version-id header",
+        "specifies",
+        "Version ID of source object that was copied"
+      ],
+      [
+        "If object expiration is configured",
+        "response includes",
+        "expiration header"
+      ],
+      [
+        "x-amz-server-side-encryption-bucket-key-enabled header",
+        "indicates whether",
+        "copied object uses S3 Bucket Key for SSE-KMS"
+      ],
+      [
+        "If present, x-amz-server-side-encryption-kms-encryption-context header",
+        "indicates",
+        "AWS KMS Encryption Context for object encryption"
+      ],
+      [
+        "Value of x-amz-server-side-encryption-kms-encryption-context header",
+        "is",
+        "Base64 encoded UTF-8 string holding JSON with encryption context key-value pairs"
+      ],
+      [
+        "x-amz-version-id header",
+        "returns",
+        "Version ID of newly created copy"
+      ],
+      [
+        "CopyObjectResult",
+        "is",
+        "Root level tag for CopyObjectResult parameters"
+      ],
+      [
+        "ChecksumCRC32",
+        "is",
+        "Base64 encoded, 32-bit CRC32 checksum of object"
+      ],
+      [
+        "ChecksumCRC32 checksum",
+        "is present only if",
+        "object uploaded with the object"
+      ],
+      [
+        "ChecksumCRC32C",
+        "is",
+        "Base64 encoded, 32-bit CRC32C checksum of object"
+      ],
+      [
+        "ChecksumCRC32C checksum",
+        "is present only if",
+        "checksum uploaded with the object"
+      ],
+      [
+        "ChecksumCRC64NVME",
+        "is",
+        "Base64 encoded, 64-bit CRC64NVME checksum of object"
+      ],
+      [
+        "ChecksumCRC64NVME checksum",
+        "is present if",
+        "object copied was uploaded with CRC64NVME algorithm"
+      ],
+      [
+        "ChecksumCRC64NVME checksum",
+        "is present if",
+        "object uploaded with CRC64NVME checksum"
+      ],
+      [
+        "ETag",
+        "returns",
+        "ETag of new object"
+      ],
+      [
+        "ETag",
+        "reflects only",
+        "changes to contents of an object"
+      ],
+      [
+        "ETag",
+        "does not reflect",
+        "changes to object's metadata"
+      ],
+      [
+        "Creation date",
+        "is for",
+        "the object"
+      ],
+      [
+        "ObjectNotInActiveTierError",
+        "describes",
+        "source object of COPY action is not in active tier"
+      ],
+      [
+        "ObjectNotInActiveTierError",
+        "describes",
+        "source object is only stored in Amazon S3 Glacier"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c15",
+    "akus": [
+      [
+        "CreateBucket action",
+        "creates",
+        "an Amazon S3 bucket"
+      ],
+      [
+        "To create an Amazon S3 on Outposts bucket",
+        "see",
+        "CreateBucket"
+      ],
+      [
+        "To create a bucket",
+        "must set up",
+        "Amazon S3"
+      ],
+      [
+        "To create a bucket",
+        "must have",
+        "valid AWS Access Key ID to authenticate requests"
+      ],
+      [
+        "Anonymous requests",
+        "are never allowed to",
+        "create buckets"
+      ],
+      [
+        "By creating the bucket",
+        "you become",
+        "the bucket owner"
+      ],
+      [
+        "Two types of buckets",
+        "are",
+        "general purpose buckets"
+      ],
+      [
+        "Two types of buckets",
+        "are",
+        "directory buckets"
+      ],
+      [
+        "General purpose buckets",
+        "exist in",
+        "global namespace"
+      ],
+      [
+        "Each bucket name",
+        "must be unique across",
+        "all AWS accounts in all AWS Regions within a partition"
+      ],
+      [
+        "A partition",
+        "is",
+        "a grouping of Regions"
+      ],
+      [
+        "AWS",
+        "currently has",
+        "four partitions: aws, aws-cn, aws-us-gov, aws-eusc"
+      ],
+      [
+        "When creating general purpose bucket",
+        "can choose to create bucket in",
+        "shared global namespace"
+      ],
+      [
+        "When creating general purpose bucket",
+        "can choose to create bucket in",
+        "your account regional namespace"
+      ],
+      [
+        "Account regional namespace",
+        "is",
+        "subdivision of global namespace only your account can create buckets in"
+      ],
+      [
+        "If CreateBucket request sent to s3.amazonaws.com global endpoint",
+        "request goes to",
+        "us-east-1 Region"
+      ],
+      [
+        "Signature calculations in Signature Version 4",
+        "must use",
+        "us-east-1 as Region"
+      ],
+      [
+        "If bucket created in Region other than US East (N. Virginia)",
+        "application must be able to handle",
+        "307 redirect"
+      ],
+      [
+        "Directory buckets",
+        "are created in",
+        "Availability Zones"
+      ],
+      [
+        "Directory buckets",
+        "can be created in",
+        "Local Zones"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c16",
+    "akus": [
+      [
+        "s3:CreateBucket permission",
+        "is required for",
+        "creating buckets"
+      ],
+      [
+        "s3:PutBucketAcl permission",
+        "is required if",
+        "CreateBucket request specifies public-read, public-read-write, authenticated-read, or custom ACLs"
+      ],
+      [
+        "Only s3:CreateBucket permission",
+        "is required if",
+        "ACL set to private or no ACL specified"
+      ],
+      [
+        "s3:PutBucketObjectLockConfiguration permission",
+        "is required if",
+        "x-amz-bucket-object-lock-enabled set to true"
+      ],
+      [
+        "s3:PutBucketVersioning permission",
+        "is required if",
+        "x-amz-bucket-object-lock-enabled set to true"
+      ],
+      [
+        "s3:PutBucketOwnershipControls permission",
+        "is required if",
+        "CreateBucket request includes x-amz-object-ownership header"
+      ],
+      [
+        "To set ACL on bucket as part of CreateBucket request",
+        "must explicitly set",
+        "S3 Object Ownership to a different value than default BucketOwnerEnforced"
+      ],
+      [
+        "If desired bucket ACL grants public access",
+        "must first create bucket (without ACL) and then disable",
+        "Block Public Access"
+      ],
+      [
+        "Attempting to create bucket with public ACL",
+        "will",
+        "fail"
+      ],
+      [
+        "Recommendation for modern use cases in S3",
+        "is to keep",
+        "all Block Public Access settings enabled"
+      ],
+      [
+        "Recommendation for modern use cases in S3",
+        "is to keep",
+        "ACLs disabled"
+      ],
+      [
+        "If specific use case requires public access",
+        "can disable",
+        "Block Public Access"
+      ],
+      [
+        "To disable Block Public Access",
+        "can create new bucket with Block Public Access enabled, then call",
+        "DeletePublicAccessBlock API"
+      ],
+      [
+        "To use DeletePublicAccessBlock operation",
+        "must have",
+        "s3:PutBucketPublicAccessBlock permission"
+      ],
+      [
+        "Directory bucket permissions",
+        "requires",
+        "s3express:CreateBucket permission in IAM identity-based policy"
+      ],
+      [
+        "Cross-account access to CreateBucket operation",
+        "isn't supported for",
+        "directory buckets"
+      ],
+      [
+        "CreateBucket operation",
+        "can only be performed by",
+        "AWS account that owns the resource for directory buckets"
+      ],
+      [
+        "Permissions for ACLs, Object Lock, S3 Object Ownership, S3 Block Public Access",
+        "are not supported for",
+        "directory buckets"
+      ],
+      [
+        "For directory buckets",
+        "all Block Public Access settings",
+        "are enabled at bucket level"
+      ],
+      [
+        "For directory buckets",
+        "S3 Object Ownership",
+        "is set to Bucket owner enforced (ACLs disabled)"
+      ],
+      [
+        "Directory bucket settings",
+        "cannot be modified",
+        "for Block Public Access and S3 Object Ownership"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c17",
+    "akus": [
+      [
+        "The name",
+        "is for",
+        "the bucket to create"
+      ],
+      [
+        "Bucket naming rules",
+        "are for",
+        "general purpose buckets"
+      ],
+      [
+        "The canned ACL",
+        "applies to",
+        "the bucket"
+      ],
+      [
+        "x-amz-bucket-namespace header",
+        "specifies",
+        "namespace for general purpose bucket creation"
+      ],
+      [
+        "General purpose buckets in account regional namespace",
+        "must follow",
+        "specific naming convention"
+      ],
+      [
+        "Bucket names for account regional namespace",
+        "must follow format",
+        "bucket-name-prefix-accountId-region-an"
+      ],
+      [
+        "Valid Values for x-amz-bucket-namespace",
+        "are",
+        "account-regional"
+      ],
+      [
+        "Valid Values for x-amz-bucket-namespace",
+        "are",
+        "global"
+      ],
+      [
+        "x-amz-bucket-object-lock-enabled header",
+        "specifies whether",
+        "S3 Object Lock is enabled for new bucket"
+      ],
+      [
+        "WRITE permission",
+        "allows grantee to create",
+        "new objects in the bucket"
+      ],
+      [
+        "WRITE permission for existing objects",
+        "allows",
+        "deletions and overwrites by bucket and object owners"
+      ],
+      [
+        "x-amz-object-ownership header",
+        "is",
+        "container element for object ownership controls"
+      ],
+      [
+        "BucketOwnerPreferred setting",
+        "changes ownership to bucket owner",
+        "if objects uploaded with bucket-owner-full-control canned ACL"
+      ],
+      [
+        "ObjectWriter setting",
+        "causes uploading account to own object",
+        "if object uploaded with bucket-owner-full-control canned ACL"
+      ],
+      [
+        "BucketOwnerEnforced setting",
+        "disables",
+        "ACLs"
+      ],
+      [
+        "BucketOwnerEnforced setting",
+        "causes bucket owner to automatically own and have full control over",
+        "every object in bucket"
+      ],
+      [
+        "BucketOwnerEnforced setting",
+        "only accepts",
+        "PUT requests that don't specify an ACL"
+      ],
+      [
+        "BucketOwnerEnforced setting",
+        "only accepts",
+        "PUT requests that specify bucket owner full control ACLs"
+      ],
+      [
+        "Default ObjectOwnership",
+        "is set to",
+        "BucketOwnerEnforced"
+      ],
+      [
+        "Default ACLs",
+        "are",
+        "disabled"
+      ],
+      [
+        "Recommendation",
+        "is to keep",
+        "ACLs disabled"
+      ],
+      [
+        "Valid Values for x-amz-object-ownership",
+        "are",
+        "BucketOwnerPreferred, ObjectWriter, BucketOwnerEnforced"
+      ],
+      [
+        "CreateBucketConfiguration",
+        "is",
+        "Root level tag for parameters"
+      ],
+      [
+        "LocationConstraint",
+        "specifies",
+        "location where bucket will be created"
+      ],
+      [
+        "Directory buckets LocationConstraint type",
+        "is",
+        "Availability Zone"
+      ],
+      [
+        "Directory buckets LocationConstraint type",
+        "is",
+        "Local Zone"
+      ],
+      [
+        "To use Local Zone location type",
+        "your account must be enabled for",
+        "Local Zones"
+      ],
+      [
+        "HTTP 403 Forbidden error with AccessDenied code",
+        "results if",
+        "account not enabled for Local Zones"
+      ],
+      [
+        "Region",
+        "specifies",
+        "Region where bucket will be created"
+      ],
+      [
+        "If Region not specified",
+        "bucket is created in",
+        "US East (N. Virginia) Region (us-east-1) by default"
+      ],
+      [
+        "Configurations using EU value",
+        "will create bucket in",
+        "eu-west-1"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c18",
+    "akus": [
+      [
+        "An array of tags",
+        "can be applied to",
+        "the bucket being created"
+      ],
+      [
+        "Tags",
+        "are",
+        "key-value pairs of metadata"
+      ],
+      [
+        "Tags",
+        "are used to",
+        "categorize and organize buckets"
+      ],
+      [
+        "Tags",
+        "are used to",
+        "track costs"
+      ],
+      [
+        "Tags",
+        "are used to",
+        "control access"
+      ],
+      [
+        "To create general purpose bucket with tags",
+        "must have",
+        "s3:TagResource permission"
+      ],
+      [
+        "To create directory bucket with tags",
+        "must have",
+        "s3express:TagResource permission"
+      ],
+      [
+        "Tag-based conditions using aws:ResourceTag and s3:BucketTag condition keys",
+        "are applicable only after",
+        "ABAC is enabled on the bucket"
+      ],
+      [
+        "x-amz-bucket-arn header",
+        "is",
+        "Amazon Resource Name (ARN) of S3 bucket"
+      ],
+      [
+        "x-amz-bucket-arn parameter",
+        "is only supported for",
+        "S3 directory buckets"
+      ],
+      [
+        "BucketAlreadyExists error",
+        "describes",
+        "requested bucket name is not available"
+      ],
+      [
+        "Bucket namespace",
+        "is shared by",
+        "all users of the system"
+      ],
+      [
+        "BucketAlreadyOwnedByYou error",
+        "describes",
+        "bucket you tried to create already exists and you own it"
+      ],
+      [
+        "Amazon S3",
+        "returns",
+        "200 OK and resets bucket ACLs for legacy compatibility if re-creating owned bucket in North Virginia Region"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c19",
+    "akus": [
+      [
+        "CreateBucketMetadataConfiguration",
+        "creates",
+        "an S3 Metadata V2 metadata configuration for a general purpose bucket"
+      ],
+      [
+        "To use CreateBucketMetadataConfiguration",
+        "must have",
+        "s3:CreateBucketMetadataTableConfiguration permission"
+      ],
+      [
+        "To encrypt metadata tables with SSE-KMS",
+        "needs",
+        "additional permissions in KMS key policy"
+      ],
+      [
+        "To integrate table bucket with AWS analytics services",
+        "needs",
+        "additional permissions"
+      ],
+      [
+        "To query metadata tables",
+        "needs",
+        "additional permissions"
+      ],
+      [
+        "IAM policy action name",
+        "is same for",
+        "V1 and V2 API operations"
+      ],
+      [
+        "s3tables:CreateTableBucket",
+        "is a required permission for",
+        "CreateBucketMetadataConfiguration"
+      ],
+      [
+        "s3tables:CreateNamespace",
+        "is a required permission for",
+        "CreateBucketMetadataConfiguration"
+      ],
+      [
+        "s3tables:GetTable",
+        "is a required permission for",
+        "CreateBucketMetadataConfiguration"
+      ],
+      [
+        "s3tables:CreateTable",
+        "is a required permission for",
+        "CreateBucketMetadataConfiguration"
+      ],
+      [
+        "s3tables:PutTablePolicy",
+        "is a required permission for",
+        "CreateBucketMetadataConfiguration"
+      ],
+      [
+        "s3tables:PutTableEncryption",
+        "is a required permission for",
+        "CreateBucketMetadataConfiguration"
+      ],
+      [
+        "kms:DescribeKey",
+        "is a required permission for",
+        "CreateBucketMetadataConfiguration"
+      ],
+      [
+        "The general purpose bucket",
+        "is for",
+        "metadata configuration"
+      ],
+      [
+        "Content-MD5 header",
+        "is for",
+        "metadata configuration"
+      ],
+      [
+        "Expected owner",
+        "is for",
+        "general purpose bucket corresponding to metadata configuration"
+      ],
+      [
+        "Checksum algorithm",
+        "is used with",
+        "metadata configuration"
+      ],
+      [
+        "MetadataConfiguration",
+        "is",
+        "Root level tag for parameters"
+      ],
+      [
+        "InventoryTableConfiguration",
+        "is",
+        "inventory table configuration for metadata configuration"
+      ],
+      [
+        "JournalTableConfiguration",
+        "is",
+        "journal table configuration for metadata configuration"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c20",
+    "akus": [
+      [
+        "CreateBucketMetadataTableConfiguration",
+        "creates",
+        "a V1 S3 Metadata configuration for a general purpose bucket"
+      ],
+      [
+        "We",
+        "no longer recommend using",
+        "V1 CreateBucketMetadataTableConfiguration API operation"
+      ],
+      [
+        "We",
+        "recommend creating S3 Metadata configurations by using",
+        "V2 CreateBucketMetadataConfiguration API operation"
+      ],
+      [
+        "To use CreateBucketMetadataTableConfiguration",
+        "must have",
+        "s3:CreateBucketMetadataTableConfiguration permission"
+      ],
+      [
+        "To encrypt metadata tables with SSE-KMS",
+        "needs",
+        "additional permissions"
+      ],
+      [
+        "To integrate table bucket with AWS analytics services",
+        "needs",
+        "additional permissions"
+      ],
+      [
+        "s3tables:CreateNamespace",
+        "is a required permission for",
+        "CreateBucketMetadataTableConfiguration"
+      ],
+      [
+        "s3tables:GetTable",
+        "is a required permission for",
+        "CreateBucketMetadataTableConfiguration"
+      ],
+      [
+        "s3tables:CreateTable",
+        "is a required permission for",
+        "CreateBucketMetadataTableConfiguration"
+      ],
+      [
+        "s3tables:PutTablePolicy",
+        "is a required permission for",
+        "CreateBucketMetadataTableConfiguration"
+      ],
+      [
+        "The general purpose bucket",
+        "is for",
+        "metadata table configuration"
+      ],
+      [
+        "Content-MD5 header",
+        "is for",
+        "metadata table configuration"
+      ],
+      [
+        "Expected owner",
+        "is for",
+        "general purpose bucket corresponding to metadata table configuration"
+      ],
+      [
+        "Checksum algorithm",
+        "is used with",
+        "metadata table configuration"
+      ],
+      [
+        "MetadataTableConfiguration",
+        "is",
+        "Root level tag for parameters"
+      ],
+      [
+        "S3TablesDestination",
+        "is",
+        "destination information for metadata table configuration"
+      ],
+      [
+        "Destination table bucket",
+        "must be in",
+        "same Region as general purpose bucket"
+      ],
+      [
+        "Destination table bucket",
+        "must be in",
+        "same AWS account as general purpose bucket"
+      ],
+      [
+        "Specified metadata table name",
+        "must be unique within",
+        "aws_s3_metadata namespace in destination table bucket"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c21",
+    "akus": [
+      [
+        "CreateMultipartUpload action",
+        "initiates",
+        "a multipart upload"
+      ],
+      [
+        "CreateMultipartUpload action",
+        "returns",
+        "an upload ID"
+      ],
+      [
+        "Upload ID",
+        "is used to associate",
+        "all parts in specific multipart upload"
+      ],
+      [
+        "Upload ID",
+        "is specified in",
+        "subsequent upload part requests"
+      ],
+      [
+        "Upload ID",
+        "is included in",
+        "final request to complete or abort multipart upload"
+      ],
+      [
+        "After initiating and uploading parts of multipart upload",
+        "must either complete or abort",
+        "multipart upload to stop being charged"
+      ],
+      [
+        "Amazon S3",
+        "frees up space used to store parts",
+        "only after complete or abort"
+      ],
+      [
+        "Amazon S3",
+        "stops charging for part storage",
+        "only after complete or abort"
+      ],
+      [
+        "If lifecycle rule configured to abort incomplete multipart uploads",
+        "created multipart upload",
+        "must be completed within specified days"
+      ],
+      [
+        "Incomplete multipart upload",
+        "becomes eligible for abort action",
+        "if not completed within specified days"
+      ],
+      [
+        "Amazon S3",
+        "aborts",
+        "incomplete multipart upload if eligible"
+      ],
+      [
+        "S3 Lifecycle",
+        "is not supported by",
+        "directory buckets"
+      ],
+      [
+        "For request signing",
+        "multipart upload is",
+        "series of regular requests"
+      ],
+      [
+        "Each request",
+        "is signed",
+        "individually"
+      ],
+      [
+        "Signing multipart upload requests",
+        "is",
+        "nothing special"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c22",
+    "akus": [
+      [
+        "To perform multipart upload with encryption using AWS KMS key",
+        "requester must have",
+        "kms:Decrypt permission"
+      ],
+      [
+        "To perform multipart upload with encryption using AWS KMS key",
+        "requester must have",
+        "kms:GenerateDataKey actions on the key"
+      ],
+      [
+        "Requester",
+        "must have",
+        "kms:GenerateDataKey action permissions for CreateMultipartUpload API"
+      ],
+      [
+        "Requester",
+        "needs",
+        "kms:Decrypt action permissions on UploadPart and UploadPartCopy APIs"
+      ],
+      [
+        "Amazon S3",
+        "must decrypt and read data from encrypted file parts",
+        "before completing multipart upload"
+      ],
+      [
+        "General purpose buckets",
+        "use",
+        "server-side encryption for data encryption at rest"
+      ],
+      [
+        "Amazon S3",
+        "encrypts data as it writes to disks",
+        "in its data centers"
+      ],
+      [
+        "Amazon S3",
+        "decrypts data when you access it",
+        "in its data centers"
+      ],
+      [
+        "Amazon S3",
+        "automatically encrypts",
+        "all new objects uploaded to an S3 bucket"
+      ],
+      [
+        "If encryption information not specified in multipart upload request",
+        "encryption setting of uploaded parts",
+        "is set to default encryption configuration of destination bucket"
+      ],
+      [
+        "All buckets",
+        "have base level of encryption configuration that uses",
+        "SSE-S3 by default"
+      ],
+      [
+        "If destination bucket has default encryption configuration using SSE-KMS or SSE-C",
+        "Amazon S3",
+        "uses corresponding key to encrypt uploaded parts"
+      ],
+      [
+        "When performing CreateMultipartUpload operation",
+        "can request Amazon S3 to encrypt object with different encryption key",
+        "if different encryption setting desired"
+      ],
+      [
+        "If encryption setting in request is different from default",
+        "encryption setting in request",
+        "takes precedence"
+      ],
+      [
+        "If providing own encryption key",
+        "request headers in UploadPart and UploadPartCopy requests",
+        "must match headers used in CreateMultipartUpload request"
+      ],
+      [
+        "To use KMS keys (SSE-KMS) with AWS managed key (aws/s3) or customer managed keys",
+        "specify",
+        "x-amz-server-side-encryption, x-amz-server-side-encryption-aws-kms-key-id, x-amz-server-side-encryption-context headers"
+      ],
+      [
+        "If x-amz-server-side-encryption:aws:kms specified but x-amz-server-side-encryption-aws-kms-key-id not provided",
+        "Amazon S3 uses",
+        "AWS managed key (aws/s3 key) in AWS KMS to protect data"
+      ],
+      [
+        "If IAM user or role in same AWS account as KMS key",
+        "must have",
+        "kms:Decrypt and kms:GenerateDataKey* permissions on key policy"
+      ],
+      [
+        "If IAM user or role in different account from key",
+        "must have",
+        "permissions on both key policy and IAM user or role"
+      ],
+      [
+        "All GET and PUT requests for KMS-protected object",
+        "fail if not made by using",
+        "SSL, TLS, or Signature Version 4"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c23",
+    "akus": [
+      [
+        "To manage own encryption keys",
+        "provide",
+        "all specified headers in request (SSE-C)"
+      ],
+      [
+        "Directory buckets",
+        "support only",
+        "SSE-S3 (AES256) for server-side encryption"
+      ],
+      [
+        "Directory buckets",
+        "support only",
+        "SSE-KMS (aws:kms) for server-side encryption"
+      ],
+      [
+        "For directory buckets",
+        "recommendation is",
+        "bucket's default encryption uses desired configuration"
+      ],
+      [
+        "For directory buckets",
+        "recommendation is not to",
+        "override bucket default encryption in CreateSession or PUT object requests"
+      ],
+      [
+        "New objects",
+        "are automatically encrypted with",
+        "desired encryption settings if default encryption is used"
+      ],
+      [
+        "In Zonal endpoint API calls (except CopyObject and UploadPartCopy) using REST API",
+        "encryption request headers",
+        "must match encryption settings specified in CreateSession request"
+      ],
+      [
+        "Cannot override",
+        "values of encryption settings from CreateSession request",
+        "in Zonal endpoint API calls"
+      ],
+      [
+        "Amazon S3",
+        "uses encryption settings values from CreateSession request to protect new objects",
+        "in directory bucket"
+      ],
+      [
+        "In Zonal endpoint API calls (except CopyObject and UploadPartCopy)",
+        "encryption request headers",
+        "must match default encryption configuration of directory bucket"
+      ],
+      [
+        "When performing CreateMultipartUpload operation and UploadPartCopy operation for directory buckets",
+        "request headers in CreateMultipartUpload request",
+        "must match default encryption configuration of destination bucket"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c24",
+    "akus": [
+      [
+        "The name",
+        "is for",
+        "the bucket where multipart upload is initiated"
+      ],
+      [
+        "The name",
+        "is for",
+        "the bucket where object is uploaded"
+      ],
+      [
+        "Directory buckets",
+        "support only",
+        "aws-chunked value in content-length header field"
+      ],
+      [
+        "Content-Language",
+        "is",
+        "language that the content is in"
+      ],
+      [
+        "Object key",
+        "is for",
+        "which multipart upload is to be initiated"
+      ],
+      [
+        "The canned ACL",
+        "applies to",
+        "the object"
+      ],
+      [
+        "Amazon S3",
+        "supports",
+        "a set of predefined ACLs, known as canned ACLs"
+      ],
+      [
+        "Each canned ACL",
+        "has",
+        "predefined set of grantees and permissions"
+      ],
+      [
+        "To grant access permissions to individual AWS accounts or predefined groups",
+        "use",
+        "ACLs"
+      ],
+      [
+        "x-amz-checksum-algorithm header",
+        "indicates",
+        "algorithm for Amazon S3 to create checksum for object"
+      ],
+      [
+        "x-amz-checksum-algorithm header",
+        "indicates",
+        "checksum type Amazon S3 uses to calculate object\u2019s checksum value"
+      ],
+      [
+        "To give grantee READ, READ_ACP, and WRITE_ACP permissions",
+        "specify",
+        "access permissions explicitly"
+      ],
+      [
+        "Legal hold",
+        "can be applied to",
+        "uploaded object"
+      ],
+      [
+        "Object Lock mode",
+        "can be applied to",
+        "uploaded object"
+      ],
+      [
+        "Date and time",
+        "can be specified for",
+        "Object Lock expiry"
+      ],
+      [
+        "Directory buckets",
+        "support only",
+        "SSE-S3 (AES256) for server-side encryption"
+      ],
+      [
+        "Directory buckets",
+        "support only",
+        "SSE-KMS (aws:kms) for server-side encryption"
+      ],
+      [
+        "In Zonal endpoint API calls (except CopyObject and UploadPartCopy) using REST API",
+        "encryption request headers",
+        "must match encryption settings specified in CreateSession request"
+      ],
+      [
+        "Cannot override",
+        "values of encryption settings from CreateSession request",
+        "in Zonal endpoint API calls"
+      ],
+      [
+        "Amazon S3",
+        "uses encryption settings values from CreateSession request to protect new objects",
+        "in directory bucket"
+      ],
+      [
+        "In Zonal endpoint API calls (except CopyObject and UploadPartCopy)",
+        "encryption request headers",
+        "must match default encryption configuration of directory bucket"
+      ],
+      [
+        "Amazon FSx file systems",
+        "automatically encrypt data",
+        "before being written"
+      ],
+      [
+        "Amazon FSx file systems",
+        "automatically decrypt data",
+        "as it is read"
+      ],
+      [
+        "x-amz-server-side-encryption-aws-kms-key-id header",
+        "specifies",
+        "AWS KMS key ID (Key ID, Key ARN, or Key Alias) for object encryption"
+      ],
+      [
+        "If KMS key doesn't exist in same account",
+        "must use",
+        "full Key ARN, not Key ID"
+      ],
+      [
+        "If x-amz-server-side-encryption:aws:kms or aws:kms:dsse specified but x-amz-server-side-encryption-aws-kms-key-id not provided",
+        "Amazon S3 uses",
+        "AWS managed key (aws/s3) to protect data"
+      ],
+      [
+        "Directory buckets to encrypt data using SSE-KMS",
+        "recommended to specify",
+        "x-amz-server-side-encryption header to aws:kms"
+      ],
+      [
+        "x-amz-server-side-encryption-aws-kms-key-id header for directory buckets",
+        "implicitly uses",
+        "bucket's default KMS customer managed key ID"
+      ],
+      [
+        "If x-amz-server-side-encryption-aws-kms-key-id header explicitly set for directory buckets",
+        "must match",
+        "bucket's default customer managed key (using key ID or ARN)"
+      ],
+      [
+        "SSE-KMS configuration for directory buckets",
+        "can only support",
+        "1 customer managed key per bucket's lifetime"
+      ],
+      [
+        "AWS managed key (aws/s3)",
+        "isn't supported for",
+        "directory buckets SSE-KMS"
+      ],
+      [
+        "Incorrect key specification",
+        "results in",
+        "HTTP 400 Bad Request error"
+      ],
+      [
+        "S3 Bucket Keys",
+        "are always enabled for",
+        "GET and PUT operations in directory bucket"
+      ],
+      [
+        "S3 Bucket Keys",
+        "cannot be disabled for",
+        "GET and PUT operations in directory bucket"
+      ],
+      [
+        "S3 Bucket Keys",
+        "aren't supported when copying",
+        "SSE-KMS encrypted objects to/from directory buckets"
+      ],
+      [
+        "x-amz-server-side-encryption-context header",
+        "specifies",
+        "AWS KMS Encryption Context for object encryption"
+      ],
+      [
+        "x-amz-server-side-encryption-customer-key-MD5 header",
+        "specifies",
+        "128-bit MD5 digest of customer-provided encryption key"
+      ],
+      [
+        "Amazon S3",
+        "uses x-amz-server-side-encryption-customer-key-MD5 header for",
+        "message integrity check"
+      ],
+      [
+        "Default Amazon S3 Storage Class",
+        "is",
+        "STANDARD to store newly created objects"
+      ],
+      [
+        "STANDARD storage class",
+        "provides",
+        "high durability and high availability"
+      ],
+      [
+        "Directory buckets",
+        "only support",
+        "EXPRESS_ONEZONE storage class in Availability Zones"
+      ],
+      [
+        "Directory buckets",
+        "only support",
+        "ONEZONE_IA storage class in Dedicated Local Zones"
+      ],
+      [
+        "Amazon S3 on Outposts",
+        "only uses",
+        "OUTPOSTS Storage Class"
+      ],
+      [
+        "x-amz-tagging header",
+        "specifies",
+        "tag-set for the object"
+      ],
+      [
+        "Tag-set",
+        "must be encoded as",
+        "URL Query parameters"
+      ],
+      [
+        "x-amz-abort-date header",
+        "indicates when",
+        "initiated multipart upload becomes eligible for abort operation"
+      ],
+      [
+        "x-amz-abort-rule-id header",
+        "identifies",
+        "applicable lifecycle configuration rule that defines abort action"
+      ],
+      [
+        "InitiateMultipartUploadResult",
+        "is",
+        "Root level tag for parameters"
+      ],
+      [
+        "UploadId",
+        "is for",
+        "initiated multipart upload"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c25",
+    "akus": [
+      [
+        "CreateSession",
+        "creates",
+        "a session"
+      ],
+      [
+        "Session",
+        "establishes",
+        "temporary security credentials"
+      ],
+      [
+        "Temporary security credentials",
+        "support",
+        "fast authentication for Zonal endpoint API operations"
+      ],
+      [
+        "Temporary security credentials",
+        "support",
+        "fast authorization for Zonal endpoint API operations on directory buckets"
+      ],
+      [
+        "To make Zonal endpoint API requests on directory bucket",
+        "use",
+        "CreateSession API operation"
+      ],
+      [
+        "You",
+        "grant",
+        "s3express:CreateSession permission to bucket in bucket policy"
+      ],
+      [
+        "You",
+        "grant",
+        "s3express:CreateSession permission to bucket in IAM identity-based policy"
+      ],
+      [
+        "You",
+        "use",
+        "IAM credentials to make CreateSession API request"
+      ],
+      [
+        "CreateSession API request",
+        "returns",
+        "temporary security credentials"
+      ],
+      [
+        "Temporary security credentials",
+        "include",
+        "access key ID, secret access key, session token, and expiration"
+      ],
+      [
+        "Credentials",
+        "have",
+        "associated permissions to access Zonal endpoint API operations"
+      ],
+      [
+        "After session created",
+        "don't need to use",
+        "other policies to grant permissions to each Zonal endpoint API individually"
+      ],
+      [
+        "In Zonal endpoint API requests",
+        "sign requests by applying",
+        "temporary security credentials of session to request headers"
+      ],
+      [
+        "In Zonal endpoint API requests",
+        "sign requests by following",
+        "SigV4 protocol for authentication"
+      ],
+      [
+        "In Zonal endpoint API requests",
+        "apply",
+        "session token to x-amz-s3session-token request header for authorization"
+      ],
+      [
+        "Temporary security credentials",
+        "are scoped to",
+        "the bucket"
+      ],
+      [
+        "Temporary security credentials",
+        "expire after",
+        "5 minutes"
+      ],
+      [
+        "After expiration time",
+        "any calls with those credentials",
+        "will fail"
+      ],
+      [
+        "You",
+        "must use",
+        "IAM credentials again to make CreateSession API request to generate new set of temporary credentials"
+      ],
+      [
+        "Temporary credentials",
+        "cannot be",
+        "extended or refreshed beyond original specified interval"
+      ],
+      [
+        "AWS SDKs",
+        "handle",
+        "session token refreshes automatically"
+      ],
+      [
+        "We",
+        "recommend using",
+        "AWS SDKs to initiate and manage requests to CreateSession API"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c26",
+    "akus": [
+      [
+        "Requests for CreateSession API operation",
+        "must be made to",
+        "Zonal endpoint"
+      ],
+      [
+        "Zonal endpoints",
+        "support",
+        "virtual-hosted-style requests in format https://bucket-name.s3express-zone-id.region-code.amazonaws.com"
+      ],
+      [
+        "Path-style requests",
+        "are not supported by",
+        "Zonal endpoints"
+      ],
+      [
+        "CopyObject API operation",
+        "doesn't use",
+        "temporary security credentials returned from CreateSession API for authentication and authorization"
+      ],
+      [
+        "HeadBucket API operation",
+        "doesn't use",
+        "temporary security credentials returned from CreateSession API for authentication and authorization"
+      ],
+      [
+        "To obtain temporary security credentials",
+        "must create",
+        "bucket policy that grants s3express:CreateSession permission to bucket"
+      ],
+      [
+        "To obtain temporary security credentials",
+        "must create",
+        "IAM identity-based policy that grants s3express:CreateSession permission to bucket"
+      ],
+      [
+        "In a policy",
+        "can have",
+        "s3express:SessionMode condition key to control who can create ReadWrite or ReadOnly session"
+      ],
+      [
+        "To grant cross-account access to Zonal endpoint API operations",
+        "bucket policy should grant",
+        "both accounts s3express:CreateSession permission"
+      ]
+    ]
+  },
+  {
+    "chunk_id": "c27",
+    "akus": [
+      [
+        "If encrypting objects with SSE-KMS",
+        "must have",
+        "kms:GenerateDataKey and kms:Decrypt permissions in IAM identity-based policies"
+      ],
+      [
+        "If encrypting objects with SSE-KMS",
+        "must have",
+        "kms:GenerateDataKey and kms:Decrypt permissions in AWS KMS key policies for target AWS KMS key"
+      ],
+      [
+        "Directory buckets",
+        "support only",
+        "SSE-S3 (AES256) for server-side encryption"
+      ],
+      [
+        "Directory buckets",
+        "support only",
+        "SSE-KMS (aws:kms) for server-side encryption"
+      ],
+      [
+        "For directory buckets",
+        "recommendation is",
+        "bucket's default encryption uses desired configuration"
+      ],
+      [
+        "For directory buckets",
+        "recommendation is not to",
+        "override bucket default encryption in CreateSession or PUT object requests"
+      ],
+      [
+        "New objects",
+        "are automatically encrypted with",
+        "desired encryption settings if default encryption is used"
+      ],
+      [
+        "For Zonal endpoint (object-level) API operations except CopyObject and UploadPartCopy",
+        "authenticate and authorize requests through",
+        "CreateSession for low latency"
+      ],
+      [
+        "To encrypt new objects in directory bucket with SSE-KMS",
+        "must specify",
+        "SSE-KMS as directory bucket's default encryption configuration with KMS key"
+      ],
+      [
+        "New objects",
+        "are automatically encrypted and decrypted with SSE-KMS and S3 Bucket Keys",
+        "during session if SSE-KMS specified as default"
+      ],
+      [
+        "Only 1 customer managed key",
+        "is supported per",
+        "directory bucket for its lifetime"
+      ],
+      [
+        "AWS managed key (aws/s3)",
+        "isn't supported for",
+        "directory buckets SSE-KMS"
+      ],
+      [
+        "After specifying SSE-KMS as bucket's default encryption configuration with customer managed key",
+        "cannot change",
+        "customer managed key for bucket's SSE-KMS configuration"
+      ],
+      [
+        "In Zonal endpoint API calls (except CopyObject and UploadPartCopy) using REST API",
+        "cannot override",
+        "values of encryption settings from CreateSession request"
+      ],
+      [
+        "Amazon S3",
+        "will use encryption settings values from CreateSession request to protect new objects",
+        "in directory bucket"
+      ],
+      [
+        "In Zonal endpoint API calls (except CopyObject and UploadPartCopy)",
+        "it's not supported to override",
+        "values of encryption settings from CreateSession request"
+      ]
+    ]
+  }
+]

@@ -1,16 +1,22 @@
-# Module 1: Document Chunking & AKU Extraction
+# Module 1: LLM-Based Document Chunking & AKU Extraction
 
 ## Overview
 
-Module 1 is the first stage of the AWS Knowledge Compression Pipeline. It processes raw markdown documentation and produces:
-- **chunks.json**: Semantic chunks of 200-500+ tokens with metadata and hierarchical context
-- **akus.json**: Atomic Knowledge Units (AKUs) extracted from each chunk in Subject-Verb-Object form
+Module 1 is the first stage of the AWS Knowledge Compression Pipeline. It consists of two scripts that work together:
 
-The module preprocesses documents to remove noise (TOC, page numbers, copyright), parses markdown structure, creates overlapping chunks for context preservation, and extracts domain-relevant factual statements using NLP.
+1. **parsing.py**: Cleans raw markdown documentation by removing noise (TOC, copyright, repeated headers, etc.) and reduces token count for efficient processing
+2. **llm_pipeline.py**: Processes the cleaned markdown using Google's Gemini AI model to extract structured knowledge artifacts
+
+The pipeline produces:
+- **chunks_{i}.json**: Semantic chunks of knowledge with metadata (one file per API request)
+- **akus_{i}.json**: Atomic Knowledge Units (AKUs) extracted from each chunk in Subject-Relation-Object form (one file per API request)
+
+The module splits large documents into chunks of up to 100,000 characters, sends each chunk to the Gemini AI for processing, and handles multiple requests with error handling and raw response dumps.
 
 ## Prerequisites
 
 - Python 3.8+
+- Google AI API key (Gemini)
 - pip package manager
 
 ## Installation
@@ -18,86 +24,155 @@ The module preprocesses documents to remove noise (TOC, page numbers, copyright)
 ### 1. Install Dependencies
 
 ```bash
-pip install markdown-it-py spacy
-python -m spacy download en_core_web_sm
+pip install google-genai
 ```
 
-### 2. Verify Installation
+### 2. Set Up API Key
 
-```bash
-python -c "import markdown_it; import spacy; print('Dependencies OK')"
-```
-
-## Usage
-
-### Basic Run
-
-```bash
-python parser.py
-```
-
-By default, this processes `../../data/prototype/S3/L0/s3-api.md` and outputs to `s3/intermediate/`.
-
-### Custom Input and Output
-
-Modify the `__main__` block in `parser.py`:
+The script uses a hardcoded API key. For production use, consider using environment variables:
 
 ```python
-if __name__ == "__main__":
-    run("path/to/input.md", "path/to/output/dir")
+import os
+api_key = os.getenv('GOOGLE_AI_API_KEY')
 ```
 
-Then run:
+## Scripts
+
+### parsing.py
+
+**Purpose**: Preprocesses raw markdown files to remove noise and reduce token count before sending to the LLM.
+
+**Functions**:
+- Fixes encoding artifacts (ligatures, special characters)
+- Removes noise lines (copyright, trademarks, TOC headers)
+- Eliminates repeated headers and TOC blocks
+- Normalizes spacing and formatting
+
+**Usage**:
+```bash
+python parsing.py <input_md_file> <optional_output_dir>
+```
+
+Example:
+```bash
+python parsing.py ../../data/prototype/S3/L0/s3-api.md cleaned/
+```
+
+**Output**: Cleaned markdown file in the specified output directory (default: `cleaned/`)
+
+### llm_pipeline.py
+
+**Purpose**: Processes cleaned markdown using Gemini AI to extract chunks and AKUs.
+
+**Functions**:
+- Splits large documents into API-sized chunks
+- Sends structured prompts to Gemini with chunking rules
+- Parses JSON responses into chunks and AKUs
+- Handles multiple requests for large documents
+- Provides error handling with raw response dumps
+
+**Usage**:
+```bash
+python llm_pipeline.py <cleaned_md_file> <output_directory>
+```
+
+Example:
+```bash
+python llm_pipeline.py cleaned/s3-api.md output/
+```
+
+**Output**:
+- `chunks_{request_number}.json`: Chunks from each API request
+- `akus_{request_number}.json`: AKUs from each API request
+- `raw_request_{request_number}.json`: Raw API response (only on parsing errors)
+
+## Full Pipeline Usage
+
+To process a document end-to-end:
 
 ```bash
-python parser.py
+# Step 1: Clean the raw markdown
+python parsing.py ../../data/prototype/S3/L0/s3-api.md cleaned/
+
+# Step 2: Extract knowledge artifacts
+python llm_pipeline.py cleaned/s3-api.md output/
 ```
-
-## Output Files
-
-### chunks.json
-
-Contains structured chunks with:
-- `chunk_id`: Unique identifier (e.g., "c0")
-- `text`: Chunk content with 100-token overlap with next chunk
-- `tokens`: Word count
-- `heading_path`: Document hierarchy
-- `section_id`: Source section identifier
-- `source`: Source reference
-- `position`: Sequential position
-
-### akus.json
-
-Contains extracted AKUs per chunk:
-- `chunk_id`: Reference to chunk
-- `akus`: Array of [Subject, Verb, Object] tuples
-
-Example AKU:
-```
-["S3 bucket", "store", "objects"]
-```
-
-## How It Works
-
-1. **Load & Preprocess**: Removes TOC lines, API versions, headers, copyright, trademarks
-2. **Parse**: Converts markdown to hierarchical sections with content
-3. **Chunk**: Splits sections into semantic chunks (200-500+ tokens)
-4. **Overlap**: Adds last 100 tokens from previous chunk for context
-5. **Extract AKUs**: Uses spaCy NLP to identify Subject-Verb-Object triples from domain text
 
 ## Configuration
 
-Edit constants in `parser.py` to customize:
+Edit constants in `llm_pipeline.py`:
 
-- `BAD_SUBJECTS`, `BAD_OBJECTS`, `BAD_VERBS`: Filter low-quality AKUs
-- `DOMAIN_TERMS`: AWS-specific vocabulary for relevance filtering
-- Chunk size thresholds in `build_chunks()` function
+- `MODEL`: Gemini model to use (default: "gemini-2.0-flash-exp")
+- `MAX_INPUT_CHARS`: Maximum characters per request (default: 100000)
+
+## How It Works
+
+1. **Preprocessing (parsing.py)**: Cleans the raw markdown by removing noise, fixing encoding, eliminating repeated content, and normalizing formatting to reduce token count
+2. **Load Cleaned Document (llm_pipeline.py)**: Reads the preprocessed markdown file
+3. **Calculate Requests**: Determines how many API requests are needed based on document size and `MAX_INPUT_CHARS`
+4. **Split & Process**: For each chunk:
+   - Extracts a portion of the document
+   - Builds a prompt with chunking and AKU extraction rules
+   - Sends to Gemini AI with request metadata (number, total, character range)
+   - Parses the JSON response
+   - Saves chunks and AKUs to numbered files
+5. **Error Handling**: If JSON parsing fails, dumps raw response and stops, showing last successful character position
+
+### Prompt Structure
+
+The AI is instructed to:
+- Remove any remaining noise (TOC, headers, code blocks, etc.)
+- Create semantic chunks of 150-500 words
+- Extract meaningful AKUs as [subject, relation, object] triples
+- Focus on domain knowledge from descriptive text
+
+## Output Files
+
+### chunks_{i}.json
+
+Contains structured chunks with:
+- `chunk_id`: Unique identifier (e.g., "c0")
+- `text`: Chunk content
+- `token_count`: Estimated token count
+- `heading_path`: Document hierarchy
+- `section_type`: "concept", "api", "reference", or "procedure"
+- `position`: Sequential position
+- `overlap_start`: Words overlapping with previous chunk
+- `overlap_end`: Words overlapping with next chunk
+
+### akus_{i}.json
+
+Contains extracted AKUs per chunk:
+- `chunk_id`: Reference to chunk
+- `akus`: Array of [Subject, Relation, Object] triples
+
+Example AKU:
+```
+["S3 bucket", "stores", "objects"]
+```
+
+## Error Handling
+
+- **Parsing Errors**: If the AI response cannot be parsed as JSON, the raw response is saved to `raw_request_{i}.json`
+- **API Errors**: The script stops on the first failed request and reports the last successful character position
+- **Progress Tracking**: Shows request progress and success/failure status
 
 ## Troubleshooting
 
-**Issue**: spaCy model not found
-```bash
-python -m spacy download en_core_web_sm
+**Issue**: API key invalid
+- Verify your Google AI API key
+- Check API quotas and billing
+
+**Issue**: Model not found
+- Update `MODEL` to a valid Gemini model name
+
+**Issue**: Large documents
+- The script automatically splits large documents
+- Monitor the number of requests needed
+
+**Issue**: Parsing failures
+- Check `raw_request_{i}.json` for the raw AI response
+- The response may contain markdown formatting around JSON
 ```
 
 **Issue**: No chunks generated
